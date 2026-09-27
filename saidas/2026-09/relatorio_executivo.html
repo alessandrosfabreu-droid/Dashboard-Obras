@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Relatório Executivo · Clínica Sensi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:16mm 16mm 18mm}
+:root{
+  --ink:#0f172a; --ink-2:#334155; --ink-3:#64748b; --line:#e2e8f0; --soft:#f8fafc;
+  --cyan:#0e7490; --violet:#6d28d9; --amber:#b45309; --red:#b91c1c;
+  --sans:Inter,system-ui,"Segoe UI",Roboto,sans-serif; --display:Sora,Inter,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff}
+body{color:var(--ink);font:400 10.5pt/1.5 var(--sans);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.capa{border-radius:14px;padding:22px 24px;color:#f1f5ff;
+  background:radial-gradient(500px 200px at 10% 0%,rgba(34,211,238,.25),transparent 70%),radial-gradient(500px 220px at 100% 20%,rgba(139,92,246,.3),transparent 70%),linear-gradient(160deg,#0b1a3a,#070c1c 60%,#030409)}
+.capa .eyebrow{font:600 8pt var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#67e8f9}
+.capa h1{font:700 20pt/1.2 var(--display);margin-top:8px}
+.capa p{color:#c3cce0;margin-top:4px}
+.capa .bl{margin-top:16px;padding-top:14px;border-top:1px solid rgba(148,197,255,.25);font-size:10.5pt;color:#f1f5ff}
+.capa .bl b{color:#fde68a}
+h2{font:700 13pt/1.3 var(--display);margin:22px 0 10px;display:flex;align-items:center;gap:10px;break-after:avoid}
+h2 .n{width:24px;height:24px;border-radius:50%;display:inline-grid;place-items:center;font-size:10pt;color:#fff;background:linear-gradient(135deg,#0891b2,#7c3aed)}
+p.lead{color:var(--ink-2);margin-bottom:10px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:8px 0 10px}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--soft)}
+.kpi .l{font:600 7.5pt var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.kpi .v{font:700 15pt/1.2 var(--display);margin-top:4px;color:var(--ink);font-variant-numeric:tabular-nums}
+.kpi .s{font-size:8.5pt;color:var(--ink-3);margin-top:2px}
+.kpi.warn .v{color:var(--amber)}
+table{width:100%;border-collapse:collapse;font-size:9.5pt;font-variant-numeric:tabular-nums;margin:6px 0 4px}
+th{font:600 7.5pt var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:6px 8px;border-bottom:1.5px solid var(--ink-2)}
+td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+td.n,th.n{text-align:right;white-space:nowrap}
+tr{break-inside:avoid}
+.achado{border:1px solid var(--line);border-left:4px solid var(--cyan);border-radius:10px;padding:12px 14px;margin:10px 0;break-inside:avoid}
+.achado.risco{border-left-color:var(--amber)}.achado.oportunidade{border-left-color:var(--cyan)}.achado.controle{border-left-color:var(--violet)}.achado.verificar{border-left-color:var(--ink-3)}
+.achado .top{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.achado h3{font:600 11pt/1.35 var(--display)}
+.achado .imp{font:700 11pt var(--display);white-space:nowrap;color:var(--ink)}
+.achado .tag{font:600 7.5pt var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px}
+.achado dl{display:grid;grid-template-columns:92px 1fr;gap:4px 10px;margin-top:8px;font-size:9.8pt}
+.achado dt{color:var(--ink-3);font-weight:600}
+.achado dd{color:var(--ink-2)}
+.alerta{color:var(--red);font-weight:600}
+.bar{height:8px;border-radius:0 3px 3px 0;background:linear-gradient(90deg,#0891b2,#7c3aed);display:inline-block;vertical-align:middle}
+.esf{display:inline-block;padding:1px 8px;border-radius:99px;font-size:8pt;font-weight:600;background:#ecfeff;color:var(--cyan)}
+.esf.m{background:#f5f3ff;color:var(--violet)}.esf.a{background:#fffbeb;color:var(--amber)}
+ul.lim{list-style:none;display:grid;gap:7px}
+ul.lim li{padding-left:18px;position:relative;color:var(--ink-2)}
+ul.lim li::before{content:"";position:absolute;left:3px;top:.55em;width:7px;height:7px;border-radius:50%;border:1.5px solid var(--ink-3)}
+ul.lim li b{color:var(--ink)}
+.prem{margin-top:8px;padding:10px 12px;background:var(--soft);border:1px solid var(--line);border-radius:10px;font-size:9.3pt;color:var(--ink-2)}
+.prem b{color:var(--ink)}
+#t-plano td:nth-child(2){width:36%}
+#t-plano td:nth-child(6){width:20%}
+.cenario td:nth-child(3){font-weight:700;color:var(--cyan)}
+.fonte{margin-top:18px;font-size:8pt;color:var(--ink-3)}
+.pb{break-before:page}
+</style>
+</head>
+<body>
+<section class="capa">
+  <div class="eyebrow">Relatório executivo · Obra</div>
+  <h1 id="titulo"></h1>
+  <p id="sub"></p>
+  <div class="bl" id="bl"></div>
+</section>
+
+<h2><span class="n">1</span>Diagnóstico da situação atual</h2>
+<div class="kpis" id="kpis"></div>
+<p class="lead" id="diag"></p>
+<table id="t-grupos"></table>
+
+<h2><span class="n">2</span>Descobertas, em ordem de impacto financeiro</h2>
+<p class="lead">Cada descoberta traz o dado que a sustenta e o raciocínio que liga a causa ao efeito no custo da obra.</p>
+<div id="achados"></div>
+
+<h2><span class="n">3</span>Plano de ação, priorizado por retorno sobre esforço</h2>
+<p class="lead">Retorno = valor em reais que a ação protege, economiza ou traz para o controle. Esforço: baixo (horas de trabalho interno), médio (depende de terceiros, dias), alto (semanas).</p>
+<table id="t-plano"></table>
+
+<h2><span class="n">4</span>Cenário se as recomendações forem seguidas</h2>
+<table class="cenario" id="t-cenario"></table>
+<div class="prem" id="premissas"></div>
+
+<h2><span class="n">5</span>O que os dados não permitem afirmar</h2>
+<ul class="lim" id="limites"></ul>
+
+<p class="fonte" id="fonte"></p>
+
+<script>
+const DADOS = {"projeto": "Clínica Sensi · Sala 504 · Rio Mar Trade Center", "cidade": "Fortaleza, CE", "pasta_origem": "Clinica_Sensi_Set2026", "periodo": {"inicio": "2026-09-16", "fim": "2026-09-26"}, "gerado_em": "2026-09-27T03:12", "mapa_reembolso_eap": {"Taxas e ART": "001.01.01.01"}, "eap": [{"cod": "001", "nivel": 1, "desc": "OBRA", "orc": 143948.396678787, "real_planilha": 7071.52, "real": 7071.52}, {"cod": "001.01", "nivel": 2, "desc": "DESPESAS INDIRETAS", "orc": 24985.62, "real_planilha": 0.0, "real": 0}, {"cod": "001.01.01", "nivel": 3, "desc": "DESPESAS MENSAIS", "orc": 3185.62, "real_planilha": 0.0, "real": 0}, {"cod": "001.01.01.01", "nivel": 4, "desc": "ART", "orc": 200.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.01.01.02", "nivel": 4, "desc": "CUSTOS COM CANTEIRO DE OBRAS", "orc": 985.62, "real_planilha": 0.0, "real": 0}, {"cod": "001.01.01.03", "nivel": 4, "desc": "MOBILIZAÇÃO, DESMOBILIZAÇÃO E FRETES DA OBRA", "orc": 2000.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.01.02", "nivel": 3, "desc": "EQUIPE ADMININSTRATIVA", "orc": 17400.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.01.02.01", "nivel": 4, "desc": "EQUIPE ADMINISTRATIVA", "orc": 17400.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.01.03", "nivel": 3, "desc": "LOCAÇÃO DE EQUIPAMENTOS", "orc": 2400.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.01.03.01", "nivel": 4, "desc": "LOCAÇÃO DE EQUIPAMENTOS E MÁQUINA", "orc": 2400.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.01.04", "nivel": 3, "desc": "ELABORAÇÃO DE PROJETOS", "orc": 2000.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.01.04.01", "nivel": 4, "desc": "CUSTOS COM ELABORAÇÃO DE PROJETOS COMPLEMENTARES", "orc": 2000.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.02", "nivel": 2, "desc": "SERVIÇOS PRELIMINARES", "orc": 8695.55962076752, "real_planilha": 0.0, "real": 0}, {"cod": "001.02.01", "nivel": 3, "desc": "SERVIÇOS PRELIMINARES", "orc": 8695.55962076752, "real_planilha": 0.0, "real": 0}, {"cod": "001.02.01.01", "nivel": 4, "desc": "DEMOLIÇÃO E TRANSPORTE DE PISO CERÂMICO SOBRE CONTRAPISO", "orc": 2816.835467688, "real_planilha": 0.0, "real": 0}, {"cod": "001.02.01.02", "nivel": 4, "desc": "EXECUÇÃO DE LIXAMENTO E LIMPEZA DE CONTRAPISO AUTONIVELANTE", "orc": 78.25460800752, "real_planilha": 0.0, "real": 0}, {"cod": "001.02.01.03", "nivel": 4, "desc": "DEMOLIÇÃO E TRANSPORTE DE FORRO DE GESSO ALT. ATÉ 3,00M", "orc": 1938.467418624, "real_planilha": 0.0, "real": 0}, {"cod": "001.02.01.04", "nivel": 4, "desc": "REMOÇÃO DE BANCADAS", "orc": 222.7896, "real_planilha": 0.0, "real": 0}, {"cod": "001.02.01.05", "nivel": 4, "desc": "REMOÇÃO DE RESÍDUOS", "orc": 2205.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.02.01.06", "nivel": 4, "desc": "PROTEÇÃO DE PISO COM SALVA PISO", "orc": 1434.212526448, "real_planilha": 0.0, "real": 0}, {"cod": "001.03", "nivel": 2, "desc": "PAREDES E PAINEIS", "orc": 10849.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.03.01", "nivel": 3, "desc": "DIVISÓRIA DE GESSO", "orc": 10849.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.03.01.01", "nivel": 4, "desc": "FORNECIMENTO E EXECUÇÃO DE DRYWALL  E LÃ DE VIDRO - TERCEIRIZADO", "orc": 6349.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.03.01.02", "nivel": 4, "desc": "FORNECIMENTO E EXECUÇÃO DE ELEMENTOS DECORATIVOS EM GESSO", "orc": 4500.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.04", "nivel": 2, "desc": "FORRO DE GESSO", "orc": 3420.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.04.01", "nivel": 3, "desc": "FORRO DE GESSO", "orc": 3420.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.04.01.01", "nivel": 4, "desc": "FORNECIMENTO E EXECUÇÃO DE FORRO DE GESSO ACARTONADO FGE", "orc": 3420.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.05", "nivel": 2, "desc": "ESQUADRIAS", "orc": 6470.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.05.01", "nivel": 3, "desc": "ESQUADRIAS DE ALUMÍNIO E VIDRO", "orc": 720.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.05.01.01", "nivel": 4, "desc": "FORNECIMENTO E MONTAGEM DE ESQUADRIA FIXA", "orc": 720.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.05.02", "nivel": 3, "desc": "ESQUADRIAS DE MADEIRA", "orc": 5750.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.05.02.01", "nivel": 4, "desc": "FORNECIMENTO E MONTAGEM DE PORTA DE MADEIRA 70X210 (PARANÁ) - INCLUSO FERRAGENS (ABRIR)", "orc": 3450.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.05.02.02", "nivel": 4, "desc": "FORNECIMENTO E MONTAGEM DE PORTA DE MADEIRA 60X210 (PARANÁ) - INCLUSO FERRAGENS (CORRER)", "orc": 2300.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.06", "nivel": 2, "desc": "REVESTIMENTOS", "orc": 24342.7362335651, "real_planilha": 2660.36, "real": 2660.36}, {"cod": "001.06.01", "nivel": 3, "desc": "REVESTIMENTO DE PISO", "orc": 14550.9198715195, "real_planilha": 2660.36, "real": 2660.36}, {"cod": "001.06.01.01", "nivel": 4, "desc": "ASSENTAMENTO DE PORCELANATO 120X120CM COM AC-III E NIVELADORES - PISO", "orc": 4802.599772988, "real_planilha": 0.0, "real": 0}, {"cod": "001.06.01.02", "nivel": 4, "desc": "FORNECIMENTO PORCELANATO PORTOBELLO 90X90CM AETERNA BIANCO", "orc": 9521.35485, "real_planilha": 2660.36, "real": 2660.36}, {"cod": "001.06.01.03", "nivel": 4, "desc": "EXECUÇÃO DE REJUNTAMENTO EM PORCELANATO 120X120CM", "orc": 226.965248531536, "real_planilha": 0.0, "real": 0}, {"cod": "001.06.02", "nivel": 3, "desc": "REVESTIMENTO DE PAREDE", "orc": 9791.81636204555, "real_planilha": 0.0, "real": 0}, {"cod": "001.06.02.01", "nivel": 4, "desc": "APLICAÇÃO DE PAPEL DE PAREDE, INCLUSO PREPARO DE SUPERFÍCIE E COLA - PAREDE", "orc": 4044.7538329961, "real_planilha": 0.0, "real": 0}, {"cod": "001.06.02.02", "nivel": 4, "desc": "ASSENTAMENTO DE PORCELANATO 120X120CM COM AC-III E NIVELADORES - PAREDE", "orc": 785.695914, "real_planilha": 0.0, "real": 0}, {"cod": "001.06.02.03", "nivel": 4, "desc": "FORNECIMENTO PORCELANATO PORTOBELLO 90X90CM AETERNA BIANCO", "orc": 1791.32625, "real_planilha": 0.0, "real": 0}, {"cod": "001.06.02.04", "nivel": 4, "desc": "EXECUÇÃO DE REJUNTAMENTO EM PORCELANATO 120X120CM", "orc": 28.639856324, "real_planilha": 0.0, "real": 0}, {"cod": "001.06.02.05", "nivel": 4, "desc": "FORNECIMENTO E EXECUÇÃO DE RODAPÉ METÁLICO", "orc": 2683.8896815952, "real_planilha": 0.0, "real": 0}, {"cod": "001.06.02.06", "nivel": 4, "desc": "FORNECIMENTO E EXECUÇÃO DE RODAPÉ SANTA LUZIA COM COLA E REJUNTE", "orc": 457.510827130248, "real_planilha": 0.0, "real": 0}, {"cod": "001.07", "nivel": 2, "desc": "PINTURA", "orc": 18185.803546704, "real_planilha": 0.0, "real": 0}, {"cod": "001.07.01", "nivel": 3, "desc": "PINTURA DE PAREDE", "orc": 13865.792837204, "real_planilha": 0.0, "real": 0}, {"cod": "001.07.01.01", "nivel": 4, "desc": "FORNECIMENTO E EXECUÇÃO DE TEXTURA EFEITO CIMENTO QUEIMADO", "orc": 8553.243525954, "real_planilha": 0.0, "real": 0}, {"cod": "001.07.01.02", "nivel": 4, "desc": "FORNECIMENTO E EXECUÇÃO DE PINTURA LATEX PVA COM DUAS DEMÃOS EM PAREDES EMASSADAS - INTERNAS", "orc": 4643.12324625, "real_planilha": 0.0, "real": 0}, {"cod": "001.07.01.03", "nivel": 4, "desc": "FORNECIMENTO E EXECUÇÃO DE  EMASSAMENTO - INTERNAS", "orc": 669.426065, "real_planilha": 0.0, "real": 0}, {"cod": "001.07.02", "nivel": 3, "desc": "PINTURA DE TETO", "orc": 4320.0107095, "real_planilha": 0.0, "real": 0}, {"cod": "001.07.02.01", "nivel": 4, "desc": "FORNECIMENTO E EXECUÇÃO DE TEXTURA EFEITO CIMENTO QUEIMADO", "orc": 3468.1494745, "real_planilha": 0.0, "real": 0}, {"cod": "001.07.02.02", "nivel": 4, "desc": "FORNECIMENTO E EXECUÇÃO DE PINTURA LATEX PVA COM DUAS DEMÃOS EM TETOS", "orc": 851.861235, "real_planilha": 0.0, "real": 0}, {"cod": "001.08", "nivel": 2, "desc": "PEDRAS, LOUÇAS E METAIS", "orc": 12515.07727775, "real_planilha": 0.0, "real": 0}, {"cod": "001.08.01", "nivel": 3, "desc": "PEDRAS", "orc": 10136.31, "real_planilha": 0.0, "real": 0}, {"cod": "001.08.01.01", "nivel": 4, "desc": "FORNECIMENTO E ASSENTAMENTO DE BANCADA E TAMPO EM BRANCO ITAÚNAS", "orc": 4288.11, "real_planilha": 0.0, "real": 0}, {"cod": "001.08.01.02", "nivel": 4, "desc": "FORNECIMENTO E ASSENTAMENTO DE TAMPO EM TRAVERTINO ROMANO BRUTO", "orc": 5848.2, "real_planilha": 0.0, "real": 0}, {"cod": "001.08.02", "nivel": 3, "desc": "LOUÇAS", "orc": 930.6922, "real_planilha": 0.0, "real": 0}, {"cod": "001.08.02.01", "nivel": 4, "desc": "FORNECIMENTO DE CUBA DE SOBREPOR RETANGULAR DECA L840", "orc": 854.9, "real_planilha": 0.0, "real": 0}, {"cod": "001.08.02.02", "nivel": 4, "desc": "INSTALAÇÃO DE ACESSÓRIOS PARA CUBA DE APOIO", "orc": 75.7922, "real_planilha": 0.0, "real": 0}, {"cod": "001.08.03", "nivel": 3, "desc": "METAIS", "orc": 1448.07507775, "real_planilha": 0.0, "real": 0}, {"cod": "001.08.03.01", "nivel": 4, "desc": "FORNECIMENTO DE TORNEIRA DECA 1198.C33 POLO", "orc": 471.9, "real_planilha": 0.0, "real": 0}, {"cod": "001.08.03.02", "nivel": 4, "desc": "FORNECIMENTO DE CUBA DE AÇO INOX DUPLA 70X34CM REF. 94061/407 - TRAMONTINA", "orc": 449.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.08.03.03", "nivel": 4, "desc": "FORNECIMENTO DE TORNEIRA DE MESA PARA COZINHA - 1167.C35", "orc": 128.54, "real_planilha": 0.0, "real": 0}, {"cod": "001.08.03.04", "nivel": 4, "desc": "DUCHA HIGIÊNICA", "orc": 225.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.08.03.05", "nivel": 4, "desc": "INSTALAÇÃO DE ACESSÓRIOS PARA CUBA DE AÇO INOX", "orc": 79.1822, "real_planilha": 0.0, "real": 0}, {"cod": "001.08.03.06", "nivel": 4, "desc": "INSTALAÇÃO DE ACESSÓRIOS PARA TORNEIRAS", "orc": 94.45287775, "real_planilha": 0.0, "real": 0}, {"cod": "001.09", "nivel": 2, "desc": "INSTALAÇÕES", "orc": 32986.26, "real_planilha": 4411.16, "real": 4411.16}, {"cod": "001.09.01", "nivel": 3, "desc": "INSTALAÇÕES ELÉTRICAS", "orc": 16400.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.09.01.01", "nivel": 4, "desc": "FORNECIMENTO E EXECUÇÃO DE INSTALAÇÃO ELÉTRICAS E LUMINOTÉCNICAS", "orc": 16400.0, "real_planilha": 0.0, "real": 0}, {"cod": "001.09.02", "nivel": 3, "desc": "INSTALAÇÕES DE REDE E TELEFONE", "orc": 2653.38, "real_planilha": 0.0, "real": 0}, {"cod": "001.09.02.01", "nivel": 4, "desc": "FORNECIMENTO E EXECUÇÃO DE INSTALAÇÃO REDE/TELEFONE", "orc": 2653.38, "real_planilha": 0.0, "real": 0}, {"cod": "001.09.03", "nivel": 3, "desc": "INSTALAÇÕES HIDROSSANITÁRIAS", "orc": 861.72, "real_planilha": 0.0, "real": 0}, {"cod": "001.09.03.01", "nivel": 4, "desc": "FORNECIMENTO E EXECUÇÃO DE INSTALAÇÃO HIDROSSANITÁRIA", "orc": 861.72, "real_planilha": 0.0, "real": 0}, {"cod": "001.09.04", "nivel": 3, "desc": "INSTALAÇÕES FRIGORIGENAS", "orc": 8200.0, "real_planilha": 4411.16, "real": 4411.16}, {"cod": "001.09.04.01", "nivel": 4, "desc": "FORNECIMENTO E EXECUÇÃO DE INSTALAÇÃO FRIGORÍGENA", "orc": 8200.0, "real_planilha": 4411.16, "real": 4411.16}, {"cod": "001.09.05", "nivel": 3, "desc": "INSTALAÇÕES DE COMBATE A INCÊNDIO", "orc": 4871.16, "real_planilha": 0.0, "real": 0}, {"cod": "001.09.05.01", "nivel": 4, "desc": "FORNECIMENTO E EXECUÇÃO DE INSTALAÇÃO DE COMBATE A INCÊNDIO", "orc": 4871.16, "real_planilha": 0.0, "real": 0}, {"cod": "001.10", "nivel": 2, "desc": "LIMPEZA", "orc": 1498.34, "real_planilha": 0.0, "real": 0}, {"cod": "001.10.01", "nivel": 3, "desc": "LIMPEZA", "orc": 1498.34, "real_planilha": 0.0, "real": 0}, {"cod": "001.10.01.01", "nivel": 4, "desc": "EXECUÇÃO DE LIMPEZA FINAL DE OBRA", "orc": 1498.34, "real_planilha": 0.0, "real": 0}, {"cod": "002", "nivel": 1, "desc": "AMBIENTAÇÃO", "orc": 128014.56, "real_planilha": 0.0, "real": 0}, {"cod": "002.01", "nivel": 2, "desc": "AMBIENTAÇÃO", "orc": 128014.56, "real_planilha": 0.0, "real": 0}, {"cod": "002.01.01", "nivel": 3, "desc": "MÓVEIS SOLTOS", "orc": 34800.0, "real_planilha": 0.0, "real": 0}, {"cod": "002.01.01.01", "nivel": 4, "desc": "FORNECIMENTO DE MÓVEIS SOLTOS", "orc": 34800.0, "real_planilha": 0.0, "real": 0}, {"cod": "002.01.02", "nivel": 3, "desc": "ILUMINAÇÃO", "orc": 19564.36, "real_planilha": 0.0, "real": 0}, {"cod": "002.01.02.01", "nivel": 4, "desc": "FORNECIMENTO DE ILUMINAÇÃO", "orc": 19564.36, "real_planilha": 0.0, "real": 0}, {"cod": "002.01.03", "nivel": 3, "desc": "MARCENARIA", "orc": 48810.2, "real_planilha": 0.0, "real": 0}, {"cod": "002.01.03.01", "nivel": 4, "desc": "FORNECIMENTO DE MARCENARIA", "orc": 48810.2, "real_planilha": 0.0, "real": 0}, {"cod": "002.01.04", "nivel": 3, "desc": "ELETRODOMÉSTICOS", "orc": 24840.0, "real_planilha": 0.0, "real": 0}, {"cod": "002.01.04.01", "nivel": 4, "desc": "FORNECIMENTO DE ELETRODOMÉSTICOS", "orc": 24840.0, "real_planilha": 0.0, "real": 0}], "lancamentos": [{"n": 1, "data": "2026-09-23T10:38", "centro": "Instalações Frigorígenas", "cod": "001.09.04.01", "desc": "Aquisição de tubos e conexões em cobre, esponjosos e itens elétricos", "favorecido": "Alexandre Araujo da Silva", "tipo": "Pix", "pagador": "Vitoria Brenda Borges Aquino", "valor": 4411.16, "obs": "Vínculo assumido: item 001.09.04.01 (Instalação frigorígena). Parte da compra são itens elétricos — confirmar se deve ser rateada com 001.09.01.01."}, {"n": 2, "data": "2026-09-21T16:51", "centro": "Revestimento Cerâmico", "cod": "001.06.01.02", "desc": "Pagamento à Cerâmica Cerbras (revestimento cerâmico)", "favorecido": "Cerâmica Cerbras", "tipo": "Pix", "pagador": "Sabrina Amabili Educação LTDA", "valor": 2660.36, "obs": "Vínculo assumido: fornecimento de porcelanato de PISO (001.06.01.02); se for parede, usar 001.06.02.03."}], "reembolsos": [{"n": 1, "categoria": "Materiais", "finalidade": "Argamassa cola para assentamento de porcelanato", "favorecido": "Rejuntamix", "data": "2026-09-23T13:36", "forma": "Pix C6 Bank", "valor": 1665.0}, {"n": 2, "categoria": "Materiais", "finalidade": "Aquisição de sacos para remoção de entulho", "favorecido": "Marcia Maria de Lima Viana Ribeiro", "data": "2026-09-21T10:01", "forma": "Pix C6 Bank", "valor": 100.0}, {"n": 3, "categoria": "Materiais", "finalidade": "Pagamento de imposto para aquisição do item", "favorecido": "Cerâmica Cerbras", "data": "2026-09-22T06:56", "forma": "Pix C6 Bank", "valor": 25.56}, {"n": 4, "categoria": "Taxas e ART", "finalidade": "Elaboração de ART", "favorecido": "CREA-CE · Boleto", "data": "2026-09-18T15:02", "forma": "Pix C6 Bank", "valor": 285.59}, {"n": 5, "categoria": "Taxas e ART", "finalidade": "Elaboração de ART", "favorecido": "CREA-CE · Boleto", "data": "2026-09-16T21:47", "forma": "Pix C6 Bank", "valor": 285.59}, {"n": 6, "categoria": "Mão de Obra", "finalidade": "Pagamento de mão de obra", "favorecido": "Antônio Eugênio Silva do Nascimento", "data": "2026-09-26T18:41", "forma": "Pix C6 Bank", "valor": 520.0}, {"n": 7, "categoria": "Transporte", "finalidade": "Retorno do pedreiro", "favorecido": "Uber Moto", "data": "2026-09-23T23:54", "forma": "Apple Pay ••••7218", "valor": 25.9}, {"n": 8, "categoria": "Transporte", "finalidade": "Retorno do pedreiro", "favorecido": "Uber Moto", "data": "2026-09-22T21:37", "forma": "Apple Pay ••••7218", "valor": 8.72}, {"n": 9, "categoria": "Transporte", "finalidade": "Retorno do pedreiro", "favorecido": "Uber Moto", "data": "2026-09-24T23:09", "forma": "Apple Pay ••••7218", "valor": 4.72}, {"n": 10, "categoria": "Transporte", "finalidade": "Retirada de itens de instalações elétricas", "favorecido": "Uber Envios Moto", "data": "2026-09-25T16:16", "forma": "Apple Pay ••••2742", "valor": 24.57}, {"n": 11, "categoria": "Transporte", "finalidade": "Coleta de sacos para remoção de entulho", "favorecido": "Uber Envios Moto", "data": "2026-09-21T12:26", "forma": "Apple Pay ••••7218", "valor": 15.18}], "diario": [{"n": 1, "data": "2026-09-21T00:00", "ambiente": "Sala (visão geral) — a confirmar", "efetivo": null, "avanco": null, "status": null}, {"n": 2, "data": "2026-09-22T00:00", "ambiente": "Sala — a confirmar", "efetivo": null, "avanco": null, "status": null}, {"n": 3, "data": "2026-09-22T00:00", "ambiente": "Sala — a confirmar", "efetivo": null, "avanco": null, "status": null}, {"n": 4, "data": "2026-09-22T00:00", "ambiente": "Sala — a confirmar", "efetivo": null, "avanco": null, "status": null}, {"n": 5, "data": "2026-09-23T00:00", "ambiente": "Sala — a confirmar", "efetivo": null, "avanco": null, "status": null}, {"n": 6, "data": "2026-09-23T00:00", "ambiente": "Sala — a confirmar", "efetivo": null, "avanco": null, "status": null}, {"n": 7, "data": "2026-09-25T00:00", "ambiente": "Sala — a confirmar", "efetivo": null, "avanco": null, "status": null}, {"n": 8, "data": "2026-09-25T00:00", "ambiente": "Sala — a confirmar", "efetivo": null, "avanco": null, "status": null}, {"n": 9, "data": "2026-09-25T00:00", "ambiente": "Sala — a confirmar", "efetivo": null, "avanco": null, "status": null}, {"n": 10, "data": "2026-09-25T00:00", "ambiente": "Sala — a confirmar", "efetivo": null, "avanco": null, "status": null}, {"n": 11, "data": "2026-09-25T00:00", "ambiente": "Sala — a confirmar", "efetivo": null, "avanco": null, "status": null}]};
+</script>
+<script>
+/* Análise compartilhada pelo dashboard e pelo relatório.
+   Entrada: objeto DADOS gerado por scripts/extrair_dados.py.
+   Saída: números derivados, frases interpretativas, achados e plano de ação.
+   Todo texto é montado a partir dos números; nada aqui é fixo para um mês. */
+
+const PREMISSAS = {
+  economiaNegociacao: 0.05,   // economia esperada ao cotar/negociar itens ainda não contratados
+  pesoGrupoRelevante: 0.20,   // grupo com peso >= 20% do orçamento e 0% executado vira achado
+  consumoItemAlerta: 0.50,    // item com >= 50% do orçado consumido vira achado
+  topItens: 8,                // itens exibidos em "onde está o saldo"
+};
+
+const fmt = {
+  brl: v => v.toLocaleString("pt-BR", {style: "currency", currency: "BRL"}),
+  brl0: v => v.toLocaleString("pt-BR", {style: "currency", currency: "BRL", maximumFractionDigits: 0}),
+  num: (v, d = 0) => v.toLocaleString("pt-BR", {minimumFractionDigits: d, maximumFractionDigits: d}),
+  pct: (v, d = 1) => (v * 100).toLocaleString("pt-BR", {minimumFractionDigits: d, maximumFractionDigits: d}) + "%",
+  mil: v => "R$ " + (v / 1000).toLocaleString("pt-BR", {minimumFractionDigits: 1, maximumFractionDigits: 1}) + " mil",
+  data: iso => { const [a, m, d] = iso.slice(0, 10).split("-"); return `${d}/${m}/${a}`; },
+  dm: iso => { const [, m, d] = iso.slice(0, 10).split("-"); return `${d}/${m}`; },
+  nome: s => { const t = s.toLowerCase(); return t.charAt(0).toUpperCase() + t.slice(1); },
+  // nome curto do item: tira "Fornecimento (e execução) de" do começo
+  curto: s => { const t = s.replace(/^fornecimento( e (execução|montagem))?( de)? /i, "").replace(/^execução de /i, ""); return t.charAt(0).toUpperCase() + t.slice(1); },
+};
+
+function somaDias(iso, n) {
+  const d = new Date(iso.slice(0, 10) + "T12:00:00"); d.setDate(d.getDate() + n);
+  return d.toISOString().slice(0, 10);
+}
+
+function analisar(D) {
+  const eap = D.eap;
+  const raiz = eap.filter(e => e.nivel === 1);
+  const orcTotal = raiz.reduce((s, e) => s + e.orc, 0);
+  const realEap = raiz.reduce((s, e) => s + e.real, 0);
+  const grupos = eap.filter(e => e.nivel === 2).map(g => ({...g, nome: fmt.nome(g.desc), saldo: g.orc - g.real}));
+  const itens = eap.filter(e => e.nivel === 4).map(i => {
+    const g = grupos.find(g => i.cod.startsWith(g.cod));
+    return {...i, nome: fmt.nome(i.desc), grupo: g ? g.nome : "", macro: i.cod.slice(0, 3), saldo: i.orc - i.real};
+  });
+  const macro = Object.fromEntries(raiz.map(r => [r.cod, fmt.nome(r.desc)]));
+
+  // pagamentos unificados (lançamentos EAP + reembolsos)
+  const canalReemb = f => /apple pay|cart/i.test(f) ? "Reembolso · Apple Pay" : "Reembolso · " + f.split(" ")[0];
+  const pagamentos = [
+    ...D.lancamentos.map(l => ({data: l.data, valor: l.valor, origem: "eap", canal: "Pagamento direto · " + l.tipo,
+      rotulo: l.desc, favorecido: l.favorecido})),
+    ...D.reembolsos.map(r => ({data: r.data, valor: r.valor, origem: "reembolso", canal: canalReemb(r.forma),
+      rotulo: r.finalidade, favorecido: r.favorecido, categoria: r.categoria})),
+  ].sort((a, b) => a.data.localeCompare(b.data));
+  const totalPago = pagamentos.reduce((s, p) => s + p.valor, 0);
+  const totalReemb = D.reembolsos.reduce((s, r) => s + r.valor, 0);
+
+  // série temporal: diária se o período cabe em um mês, mensal caso contrário
+  const meses = [...new Set(pagamentos.map(p => p.data.slice(0, 7)))];
+  const mensal = meses.length > 1;
+  const chaves = [];
+  if (mensal) meses.sort().forEach(m => chaves.push(m));
+  else for (let d = D.periodo.inicio; d <= D.periodo.fim; d = somaDias(d, 1)) chaves.push(d);
+  const serie = chaves.map(k => {
+    const ps = pagamentos.filter(p => p.data.startsWith(k));
+    return {k, eap: ps.filter(p => p.origem === "eap").reduce((s, p) => s + p.valor, 0),
+      reembolso: ps.filter(p => p.origem === "reembolso").reduce((s, p) => s + p.valor, 0), ps};
+  });
+  serie.forEach((s, i) => {
+    s.total = s.eap + s.reembolso;
+    const jan = serie.slice(Math.max(0, i - 2), i + 1);
+    s.media = jan.reduce((a, x) => a + x.eap + x.reembolso, 0) / jan.length;
+  });
+  const diasComPagto = serie.filter(s => s.total > 0).length;
+  const picos = serie.slice().sort((a, b) => b.total - a.total).slice(0, 2).filter(s => s.total > 0).sort((a, b) => a.k.localeCompare(b.k));
+  const partePicos = picos.reduce((a, s) => a + s.total, 0) / totalPago;
+
+  // canais
+  const canais = Object.values(pagamentos.reduce((m, p) => {
+    (m[p.canal] ||= {canal: p.canal, origem: p.origem, valor: 0, n: 0}); m[p.canal].valor += p.valor; m[p.canal].n++; return m;
+  }, {})).sort((a, b) => b.valor - a.valor);
+
+  // ---------- achados ----------
+  const achados = [];
+
+  // A. item com consumo alto (risco de estouro)
+  itens.filter(i => i.real > 0 && i.real / i.orc >= PREMISSAS.consumoItemAlerta).forEach(i => {
+    const ls = D.lancamentos.filter(l => l.cod === i.cod);
+    const obs = ls.map(l => l.obs).filter(Boolean).join(" ");
+    const rateio = /rate(i|a)/i.test(obs);
+    achados.push({
+      id: "consumo-" + i.cod, tipo: "risco", impacto: i.saldo, esforco: 1,
+      titulo: `${fmt.curto(i.nome)}: ${fmt.pct(i.real / i.orc)} do item já consumido`,
+      curto: `Proteger o saldo de ${fmt.curto(i.nome).toLowerCase()}`,
+      evidencia: `Item ${i.cod} orçado em ${fmt.brl(i.orc)}; ${ls.length} lançamento(s) somam ${fmt.brl(i.real)} ` +
+        `(${ls.map(l => l.desc.toLowerCase()).join("; ")}). Saldo restante: ${fmt.brl(i.saldo)}.` + (obs ? ` Observação na planilha: “${obs}”` : ""),
+      raciocinio: `O item cobre “${i.nome.toLowerCase()}”. Com ${fmt.pct(i.real / i.orc, 0)} já pago, os ${fmt.brl(i.saldo)} restantes precisam cobrir tudo o que ainda falta nele. ` +
+        `Se ainda houver mão de obra ou material a pagar acima disso, o item estoura, e isso só aparece quando o pagamento já tiver sido feito.` +
+        (rateio ? ` A planilha também indica que parte da compra pode pertencer a outro item; o rateio mudaria o percentual consumido.` : ""),
+      acao: `Levantar com o fornecedor quanto falta pagar no item` + (rateio ? ` e fazer o rateio da compra entre os itens` : ""),
+      impactoTxt: `${fmt.brl0(i.saldo)} de saldo a proteger`,
+      responsavel: "Engenheiro da obra", prazoDias: 5,
+    });
+  });
+
+  // B. grande grupo ainda não contratado (oportunidade de negociação)
+  grupos.filter(g => g.real === 0 && g.orc / orcTotal >= PREMISSAS.pesoGrupoRelevante).forEach(g => {
+    const filhos = itens.filter(i => i.cod.startsWith(g.cod)).sort((a, b) => b.orc - a.orc);
+    const eco = g.orc * PREMISSAS.economiaNegociacao;
+    achados.push({
+      id: "negociar-" + g.cod, tipo: "oportunidade", impacto: eco, esforco: 2,
+      titulo: `${g.nome}: ${fmt.pct(g.orc / orcTotal)} do orçamento, nada contratado ainda`,
+      curto: `Cotar ${g.nome.toLowerCase()} antes de fechar`,
+      evidencia: `${g.nome} soma ${fmt.brl(g.orc)} e está com 0% executado. Maiores itens: ` +
+        filhos.slice(0, 3).map(i => `${fmt.curto(i.nome).toLowerCase()} (${fmt.brl0(i.orc)})`).join(", ") + ".",
+      raciocinio: `Como nada foi contratado, ainda dá para negociar preço e prazo. É o maior bloco do orçamento, então qualquer ponto percentual de desconto aqui vale mais do que em todo o resto. ` +
+        `Com ${fmt.pct(PREMISSAS.economiaNegociacao, 0)} de economia (premissa), são ${fmt.brl0(eco)}.`,
+      acao: `Pedir no mínimo 3 cotações para ${filhos.slice(0, 2).map(i => fmt.curto(i.nome).toLowerCase()).join(" e ")} e negociar o pacote`,
+      impactoTxt: `≈ ${fmt.brl0(eco)} de economia (${fmt.pct(PREMISSAS.economiaNegociacao, 0)})`,
+      responsavel: "Compras + arquitetura/cliente", prazoDias: 20,
+    });
+  });
+
+  // C. gasto fora do orçado x realizado (reembolsos sem vínculo com a EAP)
+  if (totalReemb > 0) {
+    const porCat = Object.entries(D.reembolsos.reduce((m, r) => (m[r.categoria] = (m[r.categoria] || 0) + r.valor, m), {}))
+      .sort((a, b) => b[1] - a[1]);
+    const estouros = Object.entries(D.mapa_reembolso_eap || {}).map(([cat, cod]) => {
+      const item = itens.find(i => i.cod === cod); const v = porCat.find(c => c[0] === cat)?.[1] || 0;
+      return item && item.real + v > item.orc ? {cat, item, v, excesso: item.real + v - item.orc} : null;
+    }).filter(Boolean);
+    achados.push({
+      id: "reembolsos", tipo: "controle", impacto: totalReemb, esforco: 1,
+      titulo: `${fmt.pct(totalReemb / totalPago)} do que foi pago não aparece no orçado x realizado`,
+      curto: `Vincular os reembolsos ao orçamento`,
+      evidencia: `${D.reembolsos.length} reembolsos somam ${fmt.brl(totalReemb)} (` + porCat.map(([c, v]) => `${c} ${fmt.brl0(v)}`).join(", ") +
+        `) e não têm código da EAP. Com eles, o realizado passaria de ${fmt.brl0(realEap)} para ${fmt.brl0(realEap + totalReemb)}.` +
+        estouros.map(e => ` A categoria ${e.cat} sozinha soma ${fmt.brl(e.v)} contra ${fmt.brl(e.item.orc)} orçados no item ${e.item.cod}: ${fmt.brl(e.excesso)} acima.`).join(""),
+      raciocinio: `Enquanto os reembolsos ficam fora da EAP, o consumo do orçamento parece menor do que é e estouros de item (como o citado) não aparecem no painel. ` +
+        `É um ajuste de classificação que custa pouco e corrige a leitura de todos os gráficos.`,
+      acao: `Informar o código da EAP em cada reembolso e incluí-los no controle financeiro`,
+      impactoTxt: `${fmt.brl0(totalReemb)} passam a ser controlados` + (estouros.length ? ` · ${fmt.brl0(estouros.reduce((a, e) => a + e.excesso, 0))} de estouro revelado` : ""),
+      responsavel: "Administrativo/financeiro", prazoDias: 4,
+      estouros,
+    });
+  }
+
+  // D. possíveis duplicidades (mesmo favorecido e mesmo valor)
+  const dup = {};
+  pagamentos.forEach(p => { const k = p.favorecido + "|" + p.valor.toFixed(2); (dup[k] ||= []).push(p); });
+  Object.values(dup).filter(v => v.length > 1).forEach(v => {
+    const extra = v[0].valor * (v.length - 1);
+    achados.push({
+      id: "dup-" + v[0].favorecido, tipo: "verificar", impacto: extra, esforco: 1,
+      titulo: `Possível pagamento em duplicidade: ${v[0].favorecido}`,
+      curto: `Conferir pagamento repetido a ${v[0].favorecido}`,
+      evidencia: `${v.length} pagamentos de ${fmt.brl(v[0].valor)} ao mesmo favorecido, em ${v.map(p => fmt.dm(p.data)).join(" e ")} (${v[0].rotulo}).`,
+      raciocinio: `Mesmo favorecido e mesmo valor em datas próximas pode ser pagamento repetido ou duas guias diferentes (por exemplo, ART de execução e de projeto). Só o documento de origem confirma.`,
+      acao: `Conferir os números das guias; se for duplicidade, pedir estorno`,
+      impactoTxt: `até ${fmt.brl(extra)} recuperáveis`,
+      responsavel: "Administrativo/financeiro", prazoDias: 4,
+    });
+  });
+
+  achados.sort((a, b) => b.impacto - a.impacto);
+  const plano = achados.slice().sort((a, b) => b.impacto / b.esforco - a.impacto / a.esforco)
+    .map(a => ({...a, prazo: somaDias(D.periodo.fim, a.prazoDias)}));
+
+  // ---------- frases interpretativas ----------
+  const gruposComGasto = grupos.filter(g => g.real > 0).sort((a, b) => b.real / b.orc - a.real / a.orc);
+  const acima = grupos.filter(g => g.real > g.orc);
+  const topSaldo = itens.slice().sort((a, b) => b.saldo - a.saldo).slice(0, PREMISSAS.topItens);
+  const saldoTotal = orcTotal - realEap;
+  const top5 = topSaldo.slice(0, 5);
+  const top5Macro = top5.filter(i => i.macro === top5[0].macro).length;
+  const reembParte = totalReemb / totalPago;
+
+  const frases = {
+    grupos: `Só ${gruposComGasto.length} de ${grupos.length} grupos tiveram gasto (` +
+      gruposComGasto.map(g => `${g.nome} ${fmt.pct(g.real / g.orc)}`).join(", ") + `)` +
+      (acima.length ? `, e ${acima.map(g => g.nome).join(", ")} já passou do orçado.` : `, e nenhum passou do orçado.`) +
+      ` Como a obra está no começo, o risco agora está nos itens, não nos grupos. Esses percentuais medem dinheiro gasto, não avanço físico.`,
+    itens: `Os 5 maiores itens a contratar somam ${fmt.brl0(top5.reduce((a, i) => a + i.saldo, 0))}, ou ${fmt.pct(top5.reduce((a, i) => a + i.saldo, 0) / saldoTotal, 0)} do saldo. ` +
+      `${top5Macro} deles são de ${macro[top5[0].macro].toLowerCase()}, então é na negociação desses itens que o resultado final da obra se decide.`,
+    evolucao: picos.length
+      ? `${fmt.pct(partePicos, 0)} do valor saiu em ${picos.length} ${mensal ? "meses" : "dias"} (${picos.map(p => mensal ? p.k : fmt.dm(p.k)).join(" e ")}), puxado por ${pagamentos.slice().sort((a, b) => b.valor - a.valor).slice(0, 2).map(p => `${p.favorecido} (${fmt.brl0(p.valor)})`).join(" e ")}. ` +
+        `O gasto vem em picos de compra, não em ritmo constante, então a média diária não serve para projetar o custo final.`
+      : `Sem pagamentos no período.`,
+    canais: `${fmt.pct(reembParte, 0)} do valor (${fmt.brl0(totalReemb)}) foi pago do próprio bolso e depende de reembolso. ` +
+      `Esse dinheiro fica fora do orçado x realizado até ser vinculado à EAP, então o consumo real do orçamento é maior do que o painel de grupos mostra.`,
+  };
+
+  return {
+    PREMISSAS, orcTotal, realEap, saldoTotal, totalPago, totalReemb, reembParte, grupos, itens, macro,
+    pagamentos, serie, mensal, diasComPagto, canais, topSaldo, achados, plano, frases, acima,
+    periodo: D.periodo,
+  };
+}
+
+</script>
+<script>
+const A = analisar(DADOS);
+const {brl, brl0, pct, mil, dm, data} = fmt;
+const $ = id => document.getElementById(id);
+const esforcoTxt = e => e <= 1 ? ["Baixo", ""] : e === 2 ? ["Médio", "m"] : ["Alto", "a"];
+
+/* capa */
+const [nome, ...local] = DADOS.projeto.split(" · ");
+$("titulo").textContent = `${nome} — ${local.join(", ")}`;
+$("sub").textContent = `Pagamentos de ${data(A.periodo.inicio)} a ${data(A.periodo.fim)} · ${DADOS.cidade} · emitido em ${data(DADOS.gerado_em)}`;
+const eco = A.achados.filter(a => a.tipo === "oportunidade").reduce((s, a) => s + a.impacto, 0);
+const risco = A.achados.filter(a => a.tipo === "risco").reduce((s, a) => s + a.impacto, 0);
+const est = A.achados.flatMap(a => a.estouros || []);
+const estTotal = est.reduce((s, e) => s + e.excesso, 0);
+$("bl").innerHTML = `A obra consumiu <b>${pct(A.realEap / A.orcTotal)}</b> do orçamento de ${brl0(A.orcTotal)}, e ` +
+  `<b>${pct(A.reembParte, 0)}</b> do que já foi pago está fora desse controle. ` +
+  `As ações deste relatório somam <b>${brl0(eco)}</b> de economia estimada e protegem <b>${brl0(risco)}</b> de saldo em risco` +
+  (estTotal ? `; um estouro de <b>${brl0(estTotal)}</b> já aconteceu e hoje não aparece no controle.` : ".");
+
+/* 1. diagnóstico */
+const obra = A.grupos.filter(g => g.cod.startsWith("001")).reduce((s, g) => s + g.orc, 0);
+$("kpis").innerHTML = [
+  ["Orçamento total", brl0(A.orcTotal), `obra ${mil(obra)} + ambientação ${mil(A.orcTotal - obra)}`],
+  ["Consumido (EAP)", brl0(A.realEap), `${pct(A.realEap / A.orcTotal)} do orçamento`],
+  ["Pago no período", brl0(A.totalPago), `${A.pagamentos.length} pagamentos em ${A.diasComPagto} ${A.mensal ? "meses" : "dias"}`],
+  ["Fora do controle", brl0(A.totalReemb), `${pct(A.reembParte)} do pago · reembolsos`, "warn"],
+].map(([l, v, s, c]) => `<div class="kpi ${c || ""}"><div class="l">${l}</div><div class="v">${v}</div><div class="s">${s}</div></div>`).join("");
+const comGasto = A.grupos.filter(g => g.real > 0);
+$("diag").textContent = `${comGasto.length} dos ${A.grupos.length} grupos do orçamento tiveram gasto até agora, e ${A.acima.length ? A.acima.map(g => g.nome).join(", ") + " já passou do orçado" : "nenhum passou do orçado"}. ` +
+  `O saldo de ${brl0(A.saldoTotal)} está concentrado: os 5 maiores itens a contratar respondem por ${pct(A.topSaldo.slice(0, 5).reduce((s, i) => s + i.saldo, 0) / A.saldoTotal, 0)} dele. ` +
+  A.frases.evolucao;
+$("t-grupos").innerHTML = `<thead><tr><th>Grupo</th><th class="n">Orçado</th><th class="n">Realizado</th><th class="n">% consumido</th><th class="n">Peso</th></tr></thead><tbody>` +
+  A.grupos.slice().sort((a, b) => b.orc - a.orc).map(g => `<tr><td>${g.nome}</td><td class="n">${brl0(g.orc)}</td><td class="n">${brl0(g.real)}</td><td class="n">${pct(g.real / g.orc)}</td><td class="n">${pct(g.orc / A.orcTotal)}</td></tr>`).join("") +
+  `<tr><td><b>Total</b></td><td class="n"><b>${brl0(A.orcTotal)}</b></td><td class="n"><b>${brl0(A.realEap)}</b></td><td class="n"><b>${pct(A.realEap / A.orcTotal)}</b></td><td class="n">100,0%</td></tr></tbody>`;
+
+/* 2. achados */
+const tagTxt = {risco: "Risco de estouro", oportunidade: "Oportunidade de economia", controle: "Falha de controle", verificar: "A verificar"};
+$("achados").innerHTML = A.achados.map((a, i) => `<div class="achado ${a.tipo}">
+  <div class="tag">${i + 1} · ${tagTxt[a.tipo]}</div>
+  <div class="top"><h3>${a.titulo}</h3><span class="imp">${brl0(a.impacto)}</span></div>
+  <dl><dt>Evidência</dt><dd>${a.evidencia}</dd>
+  <dt>Causa → efeito</dt><dd>${a.raciocinio}</dd>
+  <dt>Impacto</dt><dd>${a.impactoTxt.replace(/(R\$ [\d.]+ de estouro revelado)/, '<span class="alerta">$1</span>')}</dd></dl></div>`).join("");
+
+/* 3. plano */
+const maxRe = Math.max(...A.plano.map(a => a.impacto / a.esforco));
+$("t-plano").innerHTML = `<thead><tr><th>#</th><th>Ação</th><th class="n">Retorno</th><th>Esforço</th><th>Retorno ÷ esforço</th><th>Responsável sugerido</th><th class="n">Prazo</th></tr></thead><tbody>` +
+  A.plano.map((a, i) => { const [e, c] = esforcoTxt(a.esforco);
+    return `<tr><td><b>${i + 1}</b></td><td>${a.acao}.</td><td class="n">${brl0(a.impacto)}</td><td><span class="esf ${c}">${e}</span></td>
+      <td><span class="bar" style="width:${Math.max(4, a.impacto / a.esforco / maxRe * 70)}px"></span></td><td>${a.responsavel}</td><td class="n">${dm(a.prazo)}</td></tr>`; }).join("") + `</tbody>`;
+
+/* 4. cenário */
+const dupMax = A.achados.filter(a => a.tipo === "verificar").reduce((s, a) => s + a.impacto, 0);
+const realDepois = A.realEap + A.totalReemb;
+$("t-cenario").innerHTML = `<thead><tr><th>Indicador</th><th class="n">Hoje</th><th class="n">Com as ações</th><th>Por quê</th></tr></thead><tbody>
+  <tr><td>Custo final estimado da obra</td><td class="n">${brl0(A.orcTotal)}</td><td class="n">${brl0(A.orcTotal - eco + estTotal)}</td><td>− ${brl0(eco)} de negociação${estTotal ? ` + ${brl0(estTotal)} de estouro já ocorrido` : ""}</td></tr>
+  <tr><td>Gasto registrado no orçado x realizado</td><td class="n">${brl0(A.realEap)}</td><td class="n">${brl0(realDepois)}</td><td>Reembolsos vinculados à EAP</td></tr>
+  <tr><td>% do orçamento consumido</td><td class="n">${pct(A.realEap / A.orcTotal)}</td><td class="n">${pct(realDepois / A.orcTotal)}</td><td>Mesma base, agora completa</td></tr>
+  <tr><td>Pagamentos fora do controle</td><td class="n">${pct(A.reembParte)}</td><td class="n">0,0%</td><td>Todo pagamento com código da EAP</td></tr>
+  <tr><td>Saldo de item em risco sem acompanhamento</td><td class="n">${brl0(risco)}</td><td class="n">${brl0(0)}</td><td>Saldo conferido com o fornecedor antes de novos pagamentos</td></tr>
+  </tbody>`;
+$("premissas").innerHTML = `<b>Premissas.</b> (1) Economia de ${pct(A.PREMISSAS.economiaNegociacao, 0)} ao cotar e negociar os itens ainda não contratados; é uma referência de mercado, não uma cotação recebida. ` +
+  `(2) Os demais itens fecham exatamente no valor orçado. ` +
+  `(3) ${estTotal ? `O estouro de ${brl0(estTotal)} considera o vínculo sugerido ${est.map(e => `${e.cat} → item ${e.item.cod}`).join(", ")}. ` : ""}` +
+  `(4) A possível duplicidade${dupMax ? ` (até ${brl(dupMax)})` : ""} não entra no cenário: só conta se o estorno for confirmado. ` +
+  `(5) Proteger o saldo em risco evita um estouro de valor ainda desconhecido; por isso ele não entra como economia.`;
+
+/* 5. limites */
+const diario = DADOS.diario || [];
+const semAvanco = diario.filter(d => d.avanco == null).length;
+const assumidos = DADOS.lancamentos.filter(l => /assumid|confirmar/i.test(l.obs || ""));
+const limites = [
+  `<b>Avanço físico da obra.</b> Os percentuais são de dinheiro gasto, não de serviço executado. ${diario.length ? `O diário de obra tem ${diario.length} registros, mas ${semAvanco === diario.length ? "nenhum" : semAvanco} com o avanço (%) preenchido.` : "Não há diário de obra no período."}`,
+  `<b>Atraso ou adiantamento.</b> A base não traz cronograma nem curva de desembolso planejada, então não dá para dizer se o gasto está no ritmo previsto.`,
+  `<b>Tendência de custo.</b> São ${A.serie.length} ${A.mensal ? "meses" : "dias"} de dados e ${pct(A.achados.length ? A.pagamentos.slice().sort((a, b) => b.valor - a.valor).slice(0, 2).reduce((s, p) => s + p.valor, 0) / A.totalPago : 0, 0)} do valor está em 2 pagamentos. Qualquer projeção de custo final a partir desse ritmo seria enganosa.`,
+  assumidos.length ? `<b>Classificação dos lançamentos.</b> ${assumidos.length} lançamento(s) (${brl0(assumidos.reduce((s, l) => s + l.valor, 0))}) têm o vínculo com a EAP marcado como assumido ou a confirmar; a distribuição por grupo pode mudar.` : null,
+  `<b>Situação dos reembolsos.</b> A planilha lista o que deve ser reembolsado, mas não informa se já foi pago a quem adiantou o dinheiro.`,
+  dupMax ? `<b>Duplicidade.</b> Mesmo favorecido e mesmo valor sugerem, mas não provam, pagamento repetido.` : null,
+  `<b>Economia de negociação.</b> Os ${pct(A.PREMISSAS.economiaNegociacao, 0)} são uma premissa; o valor real depende das cotações.`,
+].filter(Boolean);
+$("limites").innerHTML = limites.map(l => `<li>${l}</li>`).join("");
+$("fonte").textContent = `Fonte: planilhas da pasta ${DADOS.pasta_origem} (controle financeiro, reembolsos e diário de obra). Orçado conforme o orçamento executivo. Relatório gerado automaticamente a partir dos dados; ver CLAUDE.md para regras de cálculo.`;
+window.__pronto = true;
+</script>
+</body>
+</html>

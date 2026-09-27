@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Relatório Executivo · Clínica Sensi</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+@page{size:A4;margin:16mm 16mm 18mm}
+:root{
+  --ink:#0f172a; --ink-2:#334155; --ink-3:#64748b; --line:#e2e8f0; --soft:#f8fafc;
+  --cyan:#0e7490; --violet:#6d28d9; --amber:#b45309; --red:#b91c1c;
+  --sans:Inter,system-ui,"Segoe UI",Roboto,sans-serif; --display:Sora,Inter,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff}
+body{color:var(--ink);font:400 10.5pt/1.5 var(--sans);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.capa{border-radius:14px;padding:22px 24px;color:#f1f5ff;
+  background:radial-gradient(500px 200px at 10% 0%,rgba(34,211,238,.25),transparent 70%),radial-gradient(500px 220px at 100% 20%,rgba(139,92,246,.3),transparent 70%),linear-gradient(160deg,#0b1a3a,#070c1c 60%,#030409)}
+.capa .eyebrow{font:600 8pt var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#67e8f9}
+.capa h1{font:700 20pt/1.2 var(--display);margin-top:8px}
+.capa p{color:#c3cce0;margin-top:4px}
+.capa .bl{margin-top:16px;padding-top:14px;border-top:1px solid rgba(148,197,255,.25);font-size:10.5pt;color:#f1f5ff}
+.capa .bl b{color:#fde68a}
+h2{font:700 13pt/1.3 var(--display);margin:22px 0 10px;display:flex;align-items:center;gap:10px;break-after:avoid}
+h2 .n{width:24px;height:24px;border-radius:50%;display:inline-grid;place-items:center;font-size:10pt;color:#fff;background:linear-gradient(135deg,#0891b2,#7c3aed)}
+p.lead{color:var(--ink-2);margin-bottom:10px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:8px 0 10px}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--soft)}
+.kpi .l{font:600 7.5pt var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.kpi .v{font:700 15pt/1.2 var(--display);margin-top:4px;color:var(--ink);font-variant-numeric:tabular-nums}
+.kpi .s{font-size:8.5pt;color:var(--ink-3);margin-top:2px}
+.kpi.warn .v{color:var(--amber)}
+table{width:100%;border-collapse:collapse;font-size:9.5pt;font-variant-numeric:tabular-nums;margin:6px 0 4px}
+th{font:600 7.5pt var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:6px 8px;border-bottom:1.5px solid var(--ink-2)}
+td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+td.n,th.n{text-align:right;white-space:nowrap}
+tr{break-inside:avoid}
+.achado{border:1px solid var(--line);border-left:4px solid var(--cyan);border-radius:10px;padding:12px 14px;margin:10px 0;break-inside:avoid}
+.achado.risco{border-left-color:var(--amber)}.achado.oportunidade{border-left-color:var(--cyan)}.achado.controle{border-left-color:var(--violet)}.achado.verificar{border-left-color:var(--ink-3)}
+.achado .top{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.achado h3{font:600 11pt/1.35 var(--display)}
+.achado .imp{font:700 11pt var(--display);white-space:nowrap;color:var(--ink)}
+.achado .tag{font:600 7.5pt var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px}
+.achado dl{display:grid;grid-template-columns:92px 1fr;gap:4px 10px;margin-top:8px;font-size:9.8pt}
+.achado dt{color:var(--ink-3);font-weight:600}
+.achado dd{color:var(--ink-2)}
+.alerta{color:var(--red);font-weight:600}
+.bar{height:8px;border-radius:0 3px 3px 0;background:linear-gradient(90deg,#0891b2,#7c3aed);display:inline-block;vertical-align:middle}
+.esf{display:inline-block;padding:1px 8px;border-radius:99px;font-size:8pt;font-weight:600;background:#ecfeff;color:var(--cyan)}
+.esf.m{background:#f5f3ff;color:var(--violet)}.esf.a{background:#fffbeb;color:var(--amber)}
+ul.lim{list-style:none;display:grid;gap:7px}
+ul.lim li{padding-left:18px;position:relative;color:var(--ink-2)}
+ul.lim li::before{content:"";position:absolute;left:3px;top:.55em;width:7px;height:7px;border-radius:50%;border:1.5px solid var(--ink-3)}
+ul.lim li b{color:var(--ink)}
+.prem{margin-top:8px;padding:10px 12px;background:var(--soft);border:1px solid var(--line);border-radius:10px;font-size:9.3pt;color:var(--ink-2)}
+.prem b{color:var(--ink)}
+#t-plano td:nth-child(2){width:36%}
+#t-plano td:nth-child(6){width:20%}
+.cenario td:nth-child(3){font-weight:700;color:var(--cyan)}
+.fonte{margin-top:18px;font-size:8pt;color:var(--ink-3)}
+.pb{break-before:page}
+</style>
+</head>
+<body>
+<section class="capa">
+  <div class="eyebrow">Relatório executivo · Obra</div>
+  <h1 id="titulo"></h1>
+  <p id="sub"></p>
+  <div class="bl" id="bl"></div>
+</section>
+
+<h2><span class="n">1</span>Diagnóstico da situação atual</h2>
+<div class="kpis" id="kpis"></div>
+<p class="lead" id="diag"></p>
+<table id="t-grupos"></table>
+
+<h2><span class="n">2</span>Descobertas, em ordem de impacto financeiro</h2>
+<p class="lead">Cada descoberta traz o dado que a sustenta e o raciocínio que liga a causa ao efeito no custo da obra.</p>
+<div id="achados"></div>
+
+<h2><span class="n">3</span>Plano de ação, priorizado por retorno sobre esforço</h2>
+<p class="lead">Retorno = valor em reais que a ação protege, economiza ou traz para o controle. Esforço: baixo (horas de trabalho interno), médio (depende de terceiros, dias), alto (semanas).</p>
+<table id="t-plano"></table>
+
+<h2><span class="n">4</span>Cenário se as recomendações forem seguidas</h2>
+<table class="cenario" id="t-cenario"></table>
+<div class="prem" id="premissas"></div>
+
+<h2><span class="n">5</span>O que os dados não permitem afirmar</h2>
+<ul class="lim" id="limites"></ul>
+
+<p class="fonte" id="fonte"></p>
+
+<script>
+const DADOS = /*__DADOS__*/null;
+</script>
+<script>
+/*__ANALISE__*/
+</script>
+<script>
+const A = analisar(DADOS);
+const {brl, brl0, pct, mil, dm, data} = fmt;
+const $ = id => document.getElementById(id);
+const esforcoTxt = e => e <= 1 ? ["Baixo", ""] : e === 2 ? ["Médio", "m"] : ["Alto", "a"];
+
+/* capa */
+const [nome, ...local] = DADOS.projeto.split(" · ");
+$("titulo").textContent = `${nome} — ${local.join(", ")}`;
+$("sub").textContent = `Pagamentos de ${data(A.periodo.inicio)} a ${data(A.periodo.fim)} · ${DADOS.cidade} · emitido em ${data(DADOS.gerado_em)}`;
+const eco = A.achados.filter(a => a.tipo === "oportunidade").reduce((s, a) => s + a.impacto, 0);
+const risco = A.achados.filter(a => a.tipo === "risco").reduce((s, a) => s + a.impacto, 0);
+const est = A.achados.flatMap(a => a.estouros || []);
+const estTotal = est.reduce((s, e) => s + e.excesso, 0);
+$("bl").innerHTML = `A obra consumiu <b>${pct(A.realEap / A.orcTotal)}</b> do orçamento de ${brl0(A.orcTotal)}, e ` +
+  `<b>${pct(A.reembParte, 0)}</b> do que já foi pago está fora desse controle. ` +
+  `As ações deste relatório somam <b>${brl0(eco)}</b> de economia estimada e protegem <b>${brl0(risco)}</b> de saldo em risco` +
+  (estTotal ? `; um estouro de <b>${brl0(estTotal)}</b> já aconteceu e hoje não aparece no controle.` : ".");
+
+/* 1. diagnóstico */
+const obra = A.grupos.filter(g => g.cod.startsWith("001")).reduce((s, g) => s + g.orc, 0);
+$("kpis").innerHTML = [
+  ["Orçamento total", brl0(A.orcTotal), `obra ${mil(obra)} + ambientação ${mil(A.orcTotal - obra)}`],
+  ["Consumido (EAP)", brl0(A.realEap), `${pct(A.realEap / A.orcTotal)} do orçamento`],
+  ["Pago no período", brl0(A.totalPago), `${A.pagamentos.length} pagamentos em ${A.diasComPagto} ${A.mensal ? "meses" : "dias"}`],
+  ["Fora do controle", brl0(A.totalReemb), `${pct(A.reembParte)} do pago · reembolsos`, "warn"],
+].map(([l, v, s, c]) => `<div class="kpi ${c || ""}"><div class="l">${l}</div><div class="v">${v}</div><div class="s">${s}</div></div>`).join("");
+const comGasto = A.grupos.filter(g => g.real > 0);
+$("diag").textContent = `${comGasto.length} dos ${A.grupos.length} grupos do orçamento tiveram gasto até agora, e ${A.acima.length ? A.acima.map(g => g.nome).join(", ") + " já passou do orçado" : "nenhum passou do orçado"}. ` +
+  `O saldo de ${brl0(A.saldoTotal)} está concentrado: os 5 maiores itens a contratar respondem por ${pct(A.topSaldo.slice(0, 5).reduce((s, i) => s + i.saldo, 0) / A.saldoTotal, 0)} dele. ` +
+  A.frases.evolucao;
+$("t-grupos").innerHTML = `<thead><tr><th>Grupo</th><th class="n">Orçado</th><th class="n">Realizado</th><th class="n">% consumido</th><th class="n">Peso</th></tr></thead><tbody>` +
+  A.grupos.slice().sort((a, b) => b.orc - a.orc).map(g => `<tr><td>${g.nome}</td><td class="n">${brl0(g.orc)}</td><td class="n">${brl0(g.real)}</td><td class="n">${pct(g.real / g.orc)}</td><td class="n">${pct(g.orc / A.orcTotal)}</td></tr>`).join("") +
+  `<tr><td><b>Total</b></td><td class="n"><b>${brl0(A.orcTotal)}</b></td><td class="n"><b>${brl0(A.realEap)}</b></td><td class="n"><b>${pct(A.realEap / A.orcTotal)}</b></td><td class="n">100,0%</td></tr></tbody>`;
+
+/* 2. achados */
+const tagTxt = {risco: "Risco de estouro", oportunidade: "Oportunidade de economia", controle: "Falha de controle", verificar: "A verificar"};
+$("achados").innerHTML = A.achados.map((a, i) => `<div class="achado ${a.tipo}">
+  <div class="tag">${i + 1} · ${tagTxt[a.tipo]}</div>
+  <div class="top"><h3>${a.titulo}</h3><span class="imp">${brl0(a.impacto)}</span></div>
+  <dl><dt>Evidência</dt><dd>${a.evidencia}</dd>
+  <dt>Causa → efeito</dt><dd>${a.raciocinio}</dd>
+  <dt>Impacto</dt><dd>${a.impactoTxt.replace(/(R\$ [\d.]+ de estouro revelado)/, '<span class="alerta">$1</span>')}</dd></dl></div>`).join("");
+
+/* 3. plano */
+const maxRe = Math.max(...A.plano.map(a => a.impacto / a.esforco));
+$("t-plano").innerHTML = `<thead><tr><th>#</th><th>Ação</th><th class="n">Retorno</th><th>Esforço</th><th>Retorno ÷ esforço</th><th>Responsável sugerido</th><th class="n">Prazo</th></tr></thead><tbody>` +
+  A.plano.map((a, i) => { const [e, c] = esforcoTxt(a.esforco);
+    return `<tr><td><b>${i + 1}</b></td><td>${a.acao}.</td><td class="n">${brl0(a.impacto)}</td><td><span class="esf ${c}">${e}</span></td>
+      <td><span class="bar" style="width:${Math.max(4, a.impacto / a.esforco / maxRe * 70)}px"></span></td><td>${a.responsavel}</td><td class="n">${dm(a.prazo)}</td></tr>`; }).join("") + `</tbody>`;
+
+/* 4. cenário */
+const dupMax = A.achados.filter(a => a.tipo === "verificar").reduce((s, a) => s + a.impacto, 0);
+const realDepois = A.realEap + A.totalReemb;
+$("t-cenario").innerHTML = `<thead><tr><th>Indicador</th><th class="n">Hoje</th><th class="n">Com as ações</th><th>Por quê</th></tr></thead><tbody>
+  <tr><td>Custo final estimado da obra</td><td class="n">${brl0(A.orcTotal)}</td><td class="n">${brl0(A.orcTotal - eco + estTotal)}</td><td>− ${brl0(eco)} de negociação${estTotal ? ` + ${brl0(estTotal)} de estouro já ocorrido` : ""}</td></tr>
+  <tr><td>Gasto registrado no orçado x realizado</td><td class="n">${brl0(A.realEap)}</td><td class="n">${brl0(realDepois)}</td><td>Reembolsos vinculados à EAP</td></tr>
+  <tr><td>% do orçamento consumido</td><td class="n">${pct(A.realEap / A.orcTotal)}</td><td class="n">${pct(realDepois / A.orcTotal)}</td><td>Mesma base, agora completa</td></tr>
+  <tr><td>Pagamentos fora do controle</td><td class="n">${pct(A.reembParte)}</td><td class="n">0,0%</td><td>Todo pagamento com código da EAP</td></tr>
+  <tr><td>Saldo de item em risco sem acompanhamento</td><td class="n">${brl0(risco)}</td><td class="n">${brl0(0)}</td><td>Saldo conferido com o fornecedor antes de novos pagamentos</td></tr>
+  </tbody>`;
+$("premissas").innerHTML = `<b>Premissas.</b> (1) Economia de ${pct(A.PREMISSAS.economiaNegociacao, 0)} ao cotar e negociar os itens ainda não contratados; é uma referência de mercado, não uma cotação recebida. ` +
+  `(2) Os demais itens fecham exatamente no valor orçado. ` +
+  `(3) ${estTotal ? `O estouro de ${brl0(estTotal)} considera o vínculo sugerido ${est.map(e => `${e.cat} → item ${e.item.cod}`).join(", ")}. ` : ""}` +
+  `(4) A possível duplicidade${dupMax ? ` (até ${brl(dupMax)})` : ""} não entra no cenário: só conta se o estorno for confirmado. ` +
+  `(5) Proteger o saldo em risco evita um estouro de valor ainda desconhecido; por isso ele não entra como economia.`;
+
+/* 5. limites */
+const diario = DADOS.diario || [];
+const semAvanco = diario.filter(d => d.avanco == null).length;
+const assumidos = DADOS.lancamentos.filter(l => /assumid|confirmar/i.test(l.obs || ""));
+const limites = [
+  `<b>Avanço físico da obra.</b> Os percentuais são de dinheiro gasto, não de serviço executado. ${diario.length ? `O diário de obra tem ${diario.length} registros, mas ${semAvanco === diario.length ? "nenhum" : semAvanco} com o avanço (%) preenchido.` : "Não há diário de obra no período."}`,
+  `<b>Atraso ou adiantamento.</b> A base não traz cronograma nem curva de desembolso planejada, então não dá para dizer se o gasto está no ritmo previsto.`,
+  `<b>Tendência de custo.</b> São ${A.serie.length} ${A.mensal ? "meses" : "dias"} de dados e ${pct(A.achados.length ? A.pagamentos.slice().sort((a, b) => b.valor - a.valor).slice(0, 2).reduce((s, p) => s + p.valor, 0) / A.totalPago : 0, 0)} do valor está em 2 pagamentos. Qualquer projeção de custo final a partir desse ritmo seria enganosa.`,
+  assumidos.length ? `<b>Classificação dos lançamentos.</b> ${assumidos.length} lançamento(s) (${brl0(assumidos.reduce((s, l) => s + l.valor, 0))}) têm o vínculo com a EAP marcado como assumido ou a confirmar; a distribuição por grupo pode mudar.` : null,
+  `<b>Situação dos reembolsos.</b> A planilha lista o que deve ser reembolsado, mas não informa se já foi pago a quem adiantou o dinheiro.`,
+  dupMax ? `<b>Duplicidade.</b> Mesmo favorecido e mesmo valor sugerem, mas não provam, pagamento repetido.` : null,
+  `<b>Economia de negociação.</b> Os ${pct(A.PREMISSAS.economiaNegociacao, 0)} são uma premissa; o valor real depende das cotações.`,
+].filter(Boolean);
+$("limites").innerHTML = limites.map(l => `<li>${l}</li>`).join("");
+$("fonte").textContent = `Fonte: planilhas da pasta ${DADOS.pasta_origem} (controle financeiro, reembolsos e diário de obra). Orçado conforme o orçamento executivo. Relatório gerado automaticamente a partir dos dados; ver CLAUDE.md para regras de cálculo.`;
+window.__pronto = true;
+</script>
+</body>
+</html>
