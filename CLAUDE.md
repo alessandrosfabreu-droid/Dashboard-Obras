@@ -89,21 +89,36 @@ Premissas ficam no objeto `PREMISSAS` no topo de `analise.js` (economia de negoc
 
 ## Padrão visual do dashboard
 
-- **Tema escuro.** Fundo em degradê azul-noite → quase preto (`#0b1a3a → #070c1c → #030409`) com dois brilhos radiais (ciano no canto superior esquerdo, violeta no direito).
-- **Cartões de vidro**: fundo `rgba(255,255,255,.045–.075)`, `backdrop-filter: blur(18px)`, borda de 1px `rgba(148,197,255,.16)` que clareia no hover, raio de 18px.
-- **Paleta.** As marcas de gráfico usam os tons validados (rodar o validador da skill dataviz no modo escuro): ciano `#08a4bf`, violeta `#8b5cf6`, âmbar `#cc7f08`. Os brilhos e textos usam `#22d3ee`, `#a78bfa` e `#fbbf24`. **Vermelho `#f87171` só para alerta** (acima do orçado, estouro revelado).
-- **Significado fixo das cores.** Ciano = obra / pagamento na EAP / realizado. Violeta = ambientação / reembolso / orçado. Âmbar = ação, atenção e média móvel.
-- **Números principais**: Sora 700, 32px, degradê claro `#a5f3fc → #ddd6fe` com brilho suave. O KPI de atenção usa degradê âmbar. Textos em Inter; cores de texto `#f1f5ff`, `#c3cce0` e `#8a96b4`.
-- **Ordem dos blocos** (conta a história do "o que fazer" ao "por quê"):
-  1. Onde agir agora (3 cartões com impacto em R$, responsável e prazo)
-  2. Situação em números (4 KPIs: orçamento, consumido, pago no período, fora do controle)
-  3. Orçado x realizado por grupo | Onde está o saldo a contratar
-  4. Pagamentos por dia/mês (barras empilhadas EAP + reembolso, com média móvel) | Por onde o dinheiro saiu (canais)
-  5. Dados de origem (tabelas recolhíveis)
-- **Todo gráfico tem uma frase de leitura** (caixa `.leitura`) que diz o que o dado significa para o negócio, gerada por `A.frases`.
-- **Animações**: subida dos cartões, contagem dos KPIs, barras crescendo e linha desenhando. Use keyframes CSS, não transições em atributos SVG. Respeite `prefers-reduced-motion`. O redesenho só acontece quando a largura da tela muda.
-- **Tooltip** em toda barra e linha. Layout em grade de 12 colunas; abaixo de 1200px, 1 coluna; abaixo de 720px, barras sob o rótulo. Sem rolagem horizontal em 390px.
-- **Evitar**: eixo duplo, projeção linear de custo (gasto em picos engana), gráfico de quadrantes com pontos empilhados em 0%, e chamar % de consumo de "atingimento de meta". Em custo, 100% não é objetivo.
+Referência: layout de painel executivo escuro com rótulos em fonte monoespaçada. O usuário mandou prints de um painel comercial ("Nexo Solar") como modelo; mantenha essa linguagem.
+
+- **Fontes**: Outfit (títulos e números grandes), Inter (texto corrido), JetBrains Mono (rótulos, eixos, selos, tooltips, anotações e rodapé). Todas vêm do Google Fonts e têm fallback de sistema.
+- **Fundo**: degradê azul-noite → quase preto (`#0a1834 → #060b19 → #030409`) com brilhos radiais ciano (esquerda) e violeta (direita).
+- **Cartões de vidro**: fundo `rgba(255,255,255,.035–.065)`, `backdrop-filter: blur(18px)`, borda de 1px `rgba(148,197,255,.14)` que clareia no hover, raio de 18px e padding generoso (26–28px).
+- **Cabeçalho**: eyebrow em mono ciano ("CLÍNICA SENSI · DIRETORIA DE OBRAS"), título "Painel Executivo" (Outfit 700, 46px), resumo em uma linha com os números-chave e, à direita, uma pílula mono com o período e a base de comparação.
+- **KPIs (6)**: rótulo em mono maiúsculo espaçado; valor em Outfit 700, 38px, com degradê `#67e8f9 → #c4b5fd` e brilho, com "R$" e "mil" menores; um **selo** (pílula com seta: verde = bom, vermelho = ruim, cinza = neutro); e uma linha mono de comparação `antes → depois`. São 6 colunas só acima de 1560px, 3×2 abaixo disso, 2 no celular.
+  - Sem mês anterior, o selo mostra contexto (ex.: "29,5% do pago").
+  - Com mês anterior em `saidas/`, o `atualizar.py` injeta os dados em `/*__ANTERIOR__*/`, e o selo passa a mostrar a variação (`↑ +x%`) e a linha `mês anterior → atual`. Para custo, subir é ruim (`sobe: false`).
+- **Cabeçalho de cada gráfico**: título (Outfit 600, 20px), descrição que explica a escolha do gráfico e um **chip** mono no canto superior direito com o número-chave (ex.: "11 DIAS", "5 ITENS = 55% DO SALDO", "29,5% FORA DA EAP"). O chip fica vermelho quando é alerta.
+- **Leitura**: todo gráfico termina com uma frase que interpreta o dado, com borda esquerda âmbar de 3px, chamada em negrito (`A.chamadas`) e texto de `A.frases`.
+- **Paleta**:
+  - Marcas de gráfico validadas: ciano `#08a4bf`, violeta `#8b5cf6`, âmbar `#cc7f08`. Brilhos: `#22d3ee`, `#a78bfa`, `#eab308`.
+  - Verde `#34d399` só em selo favorável. **Vermelho `#f87171` só para alerta.**
+  - Significado fixo:
+    - ciano = obra / pagamento na EAP;
+    - violeta = ambientação / reembolso;
+    - degradê ciano→violeta = pago total;
+    - âmbar = orçamento (nas barras pareadas), média móvel e chamadas de atenção.
+- **Ordem dos blocos**:
+  1. Cabeçalho
+  2. KPIs (orçamento total, consumido, pago no período, fora do controle, economia possível, estouro já ocorrido)
+  3. Onde agir agora (3 cartões: impacto em R$ grande e âmbar, estouro em vermelho, responsável e prazo em mono)
+  4. **Trajetória**, largura total, em 3 painéis empilhados com eixo x compartilhado: pago acumulado (área + linha em degradê com brilho e círculos vazados no início e no fim), pago no período (barras empilhadas EAP + reembolso com média móvel âmbar) e registros no diário (círculos proporcionais). Uma coluna de hover cobre os 3 painéis.
+  5. **Onde está o saldo a contratar** | **Por onde o dinheiro saiu**: barras horizontais estilo funil (rótulo mono à esquerda, barra em degradê sobre trilho escuro, valor em negrito colado na barra, % à direita). Entre as linhas vai uma anotação: âmbar "▲ até aqui: 5 itens = X% do saldo"; vermelho "▼ X% do pago fica fora do orçado x realizado".
+  6. **Cada grupo consome o que pesa?**, largura total: barras pareadas na mesma escala (âmbar = fatia do orçamento, ciano→violeta = fatia do pago), 5 maiores grupos + "Demais N grupos". À direita, % consumido grande em ciano e Δ em p.p. (verde se positivo, vermelho se negativo).
+  7. Dados de origem (tabelas recolhíveis em mono)
+- **Animações**: subida dos cartões, contagem dos KPIs, barras crescendo e linhas desenhando, sempre com keyframes CSS (não transição em atributo SVG). Respeite `prefers-reduced-motion`. Redesenhe só quando a largura mudar.
+- **Celular (390px)**: sem rolagem horizontal. Rótulos sobem para cima das barras. O eixo da trajetória perde o "R$". Chips quebram linha.
+- **Evitar**: eixo duplo, projeção linear de custo (o gasto vem em picos), gráfico de quadrantes com pontos empilhados em 0%, e chamar % de consumo de "atingimento de meta". Em custo, 100% não é objetivo.
 
 ## Estrutura do relatório (PDF A4, tema claro)
 

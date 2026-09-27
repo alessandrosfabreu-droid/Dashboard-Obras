@@ -62,8 +62,11 @@ function analisar(D) {
     return {k, eap: ps.filter(p => p.origem === "eap").reduce((s, p) => s + p.valor, 0),
       reembolso: ps.filter(p => p.origem === "reembolso").reduce((s, p) => s + p.valor, 0), ps};
   });
+  let acum = 0;
   serie.forEach((s, i) => {
     s.total = s.eap + s.reembolso;
+    acum += s.total; s.acum = acum;
+    s.registros = (D.diario || []).filter(d => d.data && d.data.startsWith(s.k)).length;
     const jan = serie.slice(Math.max(0, i - 2), i + 1);
     s.media = jan.reduce((a, x) => a + x.eap + x.reembolso, 0) / jan.length;
   });
@@ -171,7 +174,13 @@ function analisar(D) {
   const top5Macro = top5.filter(i => i.macro === top5[0].macro).length;
   const reembParte = totalReemb / totalPago;
 
+  const pesoComGasto = gruposComGasto.reduce((a, g) => a + g.orc, 0) / orcTotal;
+  const maiorParado = grupos.filter(g => g.real === 0).sort((a, b) => b.orc - a.orc)[0];
   const frases = {
+    pares: gruposComGasto.length
+      ? `${gruposComGasto.map(g => g.nome).join(" e ")} ${gruposComGasto.length > 1 ? "pesam" : "pesa"} ${fmt.pct(pesoComGasto, 0)} do orçamento, mas ${gruposComGasto.length > 1 ? "receberam" : "recebeu"} ${fmt.pct(gruposComGasto.reduce((a, g) => a + g.real, 0) / realEap, 0)} do que já foi pago. ` +
+        `É comum no começo da obra. O ponto de atenção é o outro lado: ${maiorParado ? `${maiorParado.nome} (${fmt.pct(maiorParado.orc / orcTotal, 0)} do orçamento) ainda não foi posta à prova contra um preço real.` : "todos os grupos já têm gasto."}`
+      : `Nenhum grupo teve gasto no período.`,
     grupos: `Só ${gruposComGasto.length} de ${grupos.length} grupos tiveram gasto (` +
       gruposComGasto.map(g => `${g.nome} ${fmt.pct(g.real / g.orc)}`).join(", ") + `)` +
       (acima.length ? `, e ${acima.map(g => g.nome).join(", ")} já passou do orçado.` : `, e nenhum passou do orçado.`) +
@@ -186,8 +195,17 @@ function analisar(D) {
       `Esse dinheiro fica fora do orçado x realizado até ser vinculado à EAP, então o consumo real do orçamento é maior do que o painel de grupos mostra.`,
   };
 
+  // chamadas curtas (em negrito) que abrem cada frase de leitura
+  const chamadas = {
+    pares: "Gasto concentrado no início:",
+    grupos: acima.length ? "Há grupo acima do orçado:" : "Nenhum grupo estourou:",
+    itens: "A negociação decide o resultado:",
+    evolucao: "O gasto vem em picos:",
+    canais: "O controle está incompleto:",
+  };
+
   return {
-    PREMISSAS, orcTotal, realEap, saldoTotal, totalPago, totalReemb, reembParte, grupos, itens, macro,
+    PREMISSAS, chamadas, orcTotal, realEap, saldoTotal, totalPago, totalReemb, reembParte, grupos, itens, macro,
     pagamentos, serie, mensal, diasComPagto, canais, topSaldo, achados, plano, frases, acima,
     periodo: D.periodo,
   };

@@ -6,190 +6,216 @@
 <title>Painel Executivo · Clínica Sensi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg-top:#0b1a3a; --bg-mid:#070c1c; --bg-bot:#030409;
-  --glass:rgba(255,255,255,.045); --glass-hi:rgba(255,255,255,.075);
-  --line:rgba(148,197,255,.16); --line-hi:rgba(125,211,252,.42);
-  --ink:#f1f5ff; --ink-2:#c3cce0; --ink-3:#8a96b4;
-  --grid:rgba(148,163,200,.12);
-  /* séries (validadas no fundo escuro) */
+  --bg-top:#0a1834; --bg-mid:#060b19; --bg-bot:#030409;
+  --glass:rgba(255,255,255,.035); --glass-hi:rgba(255,255,255,.065);
+  --line:rgba(148,197,255,.14); --line-hi:rgba(125,211,252,.4);
+  --ink:#f1f5ff; --ink-2:#c3cce0; --ink-3:#8590ad; --ink-4:#5d6883;
+  --grid:rgba(148,163,200,.10); --track:rgba(255,255,255,.045);
+  /* séries (validadas no fundo escuro) e seus brilhos */
   --cyan:#08a4bf; --violet:#8b5cf6; --amber:#cc7f08;
-  /* brilhos / textos */
-  --cyan-glow:#22d3ee; --violet-glow:#a78bfa; --amber-glow:#fbbf24;
-  --alert:#f87171;
+  --cyan-glow:#22d3ee; --violet-glow:#a78bfa; --amber-glow:#eab308;
+  /* estado */
+  --good:#34d399; --alert:#f87171;
   --sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --display:Sora,Inter,system-ui,sans-serif;
+  --display:Outfit,Inter,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --r:18px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--bg-bot)}
 body{
-  min-height:100vh;color:var(--ink);
-  font:400 14px/1.55 var(--sans);letter-spacing:.01em;
+  min-height:100vh;color:var(--ink);font:400 14px/1.55 var(--sans);
   background:
-    radial-gradient(900px 500px at 12% -5%,rgba(34,211,238,.10),transparent 60%),
-    radial-gradient(800px 500px at 95% 10%,rgba(139,92,246,.12),transparent 60%),
-    linear-gradient(165deg,var(--bg-top) 0%,var(--bg-mid) 50%,var(--bg-bot) 100%);
+    radial-gradient(1000px 520px at 8% -8%,rgba(34,211,238,.09),transparent 60%),
+    radial-gradient(900px 520px at 100% 0%,rgba(139,92,246,.10),transparent 60%),
+    linear-gradient(170deg,var(--bg-top) 0%,var(--bg-mid) 45%,var(--bg-bot) 100%);
   background-attachment:fixed;
 }
-.wrap{max-width:1440px;margin:0 auto;padding:32px 28px 48px}
-header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:26px}
-.eyebrow{font:600 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--cyan-glow)}
-h1{font:600 30px/1.15 var(--display);letter-spacing:-.01em;margin-top:10px}
-.sub{color:var(--ink-2);margin-top:6px}
-.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;
-  background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  color:var(--ink-2);font-size:12.5px}
-.pill b{color:var(--ink);font-weight:600}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--cyan-glow);box-shadow:0 0 10px var(--cyan-glow)}
-.section-title{font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin:30px 0 12px;display:flex;align-items:center;gap:10px}
-.section-title::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.wrap{max-width:1440px;margin:0 auto;padding:44px 32px 56px}
+.mono{font-family:var(--mono)}
 
+/* cabeçalho */
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:18px;margin-bottom:34px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--cyan-glow)}
+h1{font:700 46px/1.05 var(--display);letter-spacing:-.02em;margin-top:18px}
+.resumo{color:var(--ink-2);margin-top:12px;font-size:15.5px}
+.pill{display:inline-flex;align-items:center;gap:14px;padding:11px 20px;border-radius:999px;
+  background:var(--glass);border:1px solid var(--line);font:500 12.5px var(--mono);color:var(--ink-2)}
+.pill i{width:1px;height:14px;background:var(--ink-3);opacity:.7}
+
+/* cartões de vidro */
 .card{
-  position:relative;border-radius:var(--r);padding:22px 22px 20px;
+  position:relative;border-radius:var(--r);padding:26px 28px 24px;
   background:linear-gradient(180deg,var(--glass-hi),var(--glass));
   border:1px solid var(--line);
   backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 20px 50px -30px rgba(0,0,0,.8);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 24px 60px -34px rgba(0,0,0,.9);
   transition:border-color .3s,box-shadow .3s;
   opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards;
 }
-.card:hover{border-color:var(--line-hi);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 24px 60px -28px rgba(34,211,238,.25)}
+.card:hover{border-color:var(--line-hi);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 26px 70px -30px rgba(34,211,238,.22)}
 @keyframes rise{to{opacity:1;transform:none}}
-
-/* ONDE AGIR AGORA */
-.acoes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.acao{display:flex;flex-direction:column;gap:10px;border-color:rgba(251,191,36,.22)}
-.acao:hover{border-color:rgba(251,191,36,.5);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 24px 60px -28px rgba(251,191,36,.25)}
-.acao .top{display:flex;align-items:center;gap:10px}
-.acao .num{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:700 13px var(--display);
-  color:#0a1022;background:var(--amber-glow);box-shadow:0 0 14px rgba(251,191,36,.45)}
-.acao .tag{font:600 10.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
-.acao h3{font:600 17px/1.3 var(--display);color:var(--ink)}
-.acao .imp{font:700 22px/1.2 var(--display);color:#fde68a;text-shadow:0 0 18px rgba(251,191,36,.35);font-variant-numeric:tabular-nums}
-.acao .imp .alerta{display:block;font-size:13.5px;font-weight:600;color:var(--alert);text-shadow:0 0 12px rgba(248,113,113,.35);margin-top:4px}
-.acao p{color:var(--ink-2);font-size:13px}
-.acao .meta{margin-top:auto;padding-top:10px;border-top:1px solid rgba(148,163,200,.12);display:flex;justify-content:space-between;gap:8px;color:var(--ink-3);font-size:12px}
-.acao .meta b{color:var(--ink-2);font-weight:600}
+.head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.card h2{font:600 20px/1.3 var(--display);letter-spacing:-.005em}
+.desc{color:var(--ink-3);font-size:13.5px;margin-top:6px;max-width:640px;line-height:1.6}
+.chip{flex:none;padding:6px 14px;border-radius:999px;border:1px solid var(--line);font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.chip.alert{color:var(--alert);border-color:rgba(248,113,113,.35)}
+.sec{font:500 11.5px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin:34px 0 14px}
 
 /* KPIs */
-.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.kpi .lbl{font:600 12px/1.3 var(--sans);color:var(--ink-2);letter-spacing:.08em;text-transform:uppercase}
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}
+.kpi{padding:28px 26px 24px}
+.kpi .lbl{font:500 11.5px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
 .kpi .val{
-  margin-top:12px;font:700 32px/1.1 var(--display);letter-spacing:-.015em;white-space:nowrap;
-  background:linear-gradient(95deg,#a5f3fc 0%,#ddd6fe 100%);
+  margin-top:16px;font:700 38px/1 var(--display);letter-spacing:-.02em;white-space:nowrap;
+  background:linear-gradient(95deg,#67e8f9 0%,#c4b5fd 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 0 12px rgba(34,211,238,.35));
-  font-variant-numeric:tabular-nums;
+  filter:drop-shadow(0 0 16px rgba(34,211,238,.32));font-variant-numeric:tabular-nums;
 }
-.kpi.warn .val{background:linear-gradient(95deg,#fde68a,#fcd34d);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 12px rgba(251,191,36,.3))}
-.kpi .note{margin-top:8px;font-size:13px;color:var(--ink-3)}
-.kpi .note b{color:var(--ink);font-weight:600}
-.meter{height:5px;border-radius:4px;background:rgba(255,255,255,.08);margin-top:12px;overflow:hidden}
-.meter i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--cyan-glow),var(--violet-glow));
-  box-shadow:0 0 10px rgba(34,211,238,.6);transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+.kpi .val small{font-size:.5em;font-weight:600;margin-left:3px}
+.kpi .val small.pre{margin:0 4px 0 0}
+.badge{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:5px 11px;border-radius:999px;
+  font:600 11.5px var(--mono);border:1px solid rgba(148,163,200,.35);color:var(--ink-2);background:rgba(148,163,200,.06)}
+.badge.good{color:var(--good);border-color:rgba(52,211,153,.45);background:rgba(52,211,153,.07)}
+.badge.bad{color:var(--alert);border-color:rgba(248,113,113,.45);background:rgba(248,113,113,.07)}
+.kpi .cmp{margin-top:14px;font:400 11.5px/1.6 var(--mono);color:var(--ink-3)}
+
+/* onde agir agora */
+.acoes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.acao{display:flex;flex-direction:column;gap:10px}
+.acao .top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.acao .num{font:600 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--amber-glow)}
+.acao h3{font:600 18px/1.3 var(--display)}
+.acao .imp{font:700 26px/1.15 var(--display);color:#fde68a;text-shadow:0 0 18px rgba(234,179,8,.3);font-variant-numeric:tabular-nums}
+.acao .imp small{display:block;font:600 12px var(--mono);color:var(--alert);text-shadow:none;margin-top:6px}
+.acao p{color:var(--ink-2);font-size:13.5px}
+.acao .meta{margin-top:auto;padding-top:12px;border-top:1px solid rgba(148,163,200,.12);display:flex;justify-content:space-between;gap:8px;font:400 11.5px var(--mono);color:var(--ink-3)}
+.acao .meta b{color:var(--ink-2);font-weight:500}
 
 /* grade */
-.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
-.span-7{grid-column:span 7}.span-5{grid-column:span 5}.span-12{grid-column:span 12}
-.card h2{font:600 16px/1.3 var(--display)}
-.card .desc{color:var(--ink-3);font-size:12.5px;margin-top:4px}
-.head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:14px}
-.legend{display:flex;flex-wrap:wrap;gap:14px;color:var(--ink-2);font-size:12px}
-.legend span{display:inline-flex;align-items:center;gap:7px}
-.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
-.sw.line{width:16px;height:3px;border-radius:2px}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px}
+.span-6{grid-column:span 6}.span-12{grid-column:span 12}
+
+/* leitura (chamada com borda âmbar) */
+.leitura{margin-top:22px;padding:4px 0 4px 18px;border-left:3px solid var(--amber-glow);color:var(--ink-2);font-size:14px;line-height:1.6;max-width:900px}
+.leitura b{color:var(--ink);font-weight:600}
+
+/* gráficos svg */
 .chart{position:relative;width:100%}
 .chart svg{display:block;width:100%;overflow:visible}
-svg text{font-family:var(--sans)}
-.axis text{fill:var(--ink-3);font-size:11px;font-weight:500;font-variant-numeric:tabular-nums}
+svg text{font-family:var(--mono)}
+.axis text{fill:var(--ink-3);font-size:11px}
+.plabel{fill:var(--ink-3);font-size:11.5px;letter-spacing:.14em}
 .gridl{stroke:var(--grid);stroke-width:1}
 .grow{transform-box:fill-box;transform-origin:bottom;transform:scaleY(0);animation:growY .9s cubic-bezier(.2,.7,.2,1) forwards}
 @keyframes growY{to{transform:none}}
-.draw{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:draw 1.6s cubic-bezier(.3,.6,.2,1) .9s forwards}
+.draw{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);animation:draw 1.8s cubic-bezier(.3,.6,.2,1) .5s forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
+.fade{opacity:0;animation:fadein .9s ease 1.2s forwards}
+@keyframes fadein{to{opacity:1}}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:18px;color:var(--ink-2);font-size:12.5px}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.sw.line{width:18px;height:3px;border-radius:2px}
+.sw.ring{width:11px;height:11px;border-radius:50%;border:2px solid var(--ink-2)}
 
-/* leitura (frase interpretativa) */
-.leitura{margin-top:16px;padding:12px 14px 12px 40px;position:relative;border-radius:12px;
-  background:rgba(34,211,238,.06);border:1px solid rgba(34,211,238,.18);color:var(--ink);font-size:13.5px;line-height:1.5}
-.leitura::before{content:"";position:absolute;left:14px;top:15px;width:14px;height:14px;border-radius:50%;
-  background:radial-gradient(circle,var(--cyan-glow) 0 3px,transparent 3.5px),conic-gradient(from 0deg,rgba(34,211,238,.5),rgba(139,92,246,.5),rgba(34,211,238,.5));
-  -webkit-mask:radial-gradient(circle,#000 0 3px,transparent 3.5px 5px,#000 5.5px);mask:radial-gradient(circle,#000 0 3px,transparent 3.5px 5px,#000 5.5px)}
-.leitura b{color:#fff}
+/* barras horizontais estilo funil */
+.hb{display:grid;grid-template-columns:minmax(120px,210px) 1fr 64px;align-items:center;column-gap:16px}
+.hb .lab{font:500 13px var(--mono);color:var(--ink-2);text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hb .lab small{display:block;font-size:10.5px;color:var(--ink-4)}
+.hb .bar{position:relative;height:34px;display:flex;align-items:center}
+.hb .bar .tr{position:absolute;inset:0;border-radius:8px;background:var(--track)}
+.hb .bar .fl{position:relative;height:100%;width:0;border-radius:8px;transition:width 1.3s cubic-bezier(.2,.7,.2,1)}
+.hb .bar .vl{position:relative;margin-left:12px;font:600 14px var(--mono);color:var(--ink);white-space:nowrap}
+.hb .pc{font:400 12px var(--mono);color:var(--ink-3);text-align:right}
+.hb.row{padding:5px 0;cursor:default}
+.hb.row:hover .fl{filter:brightness(1.18)}
+.hb .step{grid-column:2 / 4;font:500 12px var(--mono);color:var(--ink-3);padding:4px 0 4px 14px}
+.hb .step.alert{color:var(--alert)}
+.hb .step.warn{color:var(--amber-glow)}
+.g-obra{background:linear-gradient(90deg,#0e7490,var(--cyan-glow));box-shadow:0 0 18px rgba(34,211,238,.35)}
+.g-amb{background:linear-gradient(90deg,#6d28d9,var(--violet-glow));box-shadow:0 0 18px rgba(167,139,250,.35)}
+.g-mix{background:linear-gradient(90deg,var(--cyan-glow),var(--violet-glow));box-shadow:0 0 18px rgba(34,211,238,.3)}
+.g-orc{background:linear-gradient(90deg,#a16207,var(--amber-glow));box-shadow:0 0 14px rgba(234,179,8,.3)}
 
-/* linhas de barras (grupos, itens, canais) */
-.rows{display:flex;flex-direction:column;gap:2px}
-.row{display:grid;grid-template-columns:minmax(130px,1fr) 1.7fr 70px;align-items:center;gap:14px;padding:7px 8px;border-radius:10px;transition:background .25s}
-.rows.wide .row{grid-template-columns:minmax(150px,1.35fr) 1fr 62px}
-.row:hover{background:rgba(255,255,255,.05)}
-.row .nm{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.row .nm small{display:block;color:var(--ink-3);font-weight:400;font-size:11.5px;font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis}
-.track{position:relative;height:12px}
-.track span{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:0 4px 4px 0;transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
-.track .bud{background:rgba(139,92,246,.16);border:1px solid rgba(167,139,250,.4);border-left:0}
-.track .real{top:2px;bottom:2px;background:linear-gradient(90deg,rgba(8,164,191,.7),var(--cyan-glow));box-shadow:0 0 12px rgba(34,211,238,.6);transition-delay:.3s}
-.track .real.over{background:var(--alert);box-shadow:0 0 12px rgba(248,113,113,.6)}
-.track .fill{top:1px;bottom:1px}
-.fill.c-obra{background:linear-gradient(90deg,rgba(8,164,191,.65),var(--cyan-glow));box-shadow:0 0 12px rgba(34,211,238,.45)}
-.fill.c-amb{background:linear-gradient(90deg,rgba(139,92,246,.6),var(--violet-glow));box-shadow:0 0 12px rgba(167,139,250,.45)}
-.fill.c-reemb{background:linear-gradient(90deg,rgba(139,92,246,.6),var(--violet-glow));box-shadow:0 0 12px rgba(167,139,250,.45)}
-.v{text-align:right;font:600 13.5px var(--display);font-variant-numeric:tabular-nums;color:var(--ink)}
-.v.zero{color:var(--ink-3);font-weight:500}
-.v.over{color:var(--alert)}
+/* barras pareadas */
+.pares{display:grid;grid-template-columns:minmax(120px,200px) 1fr 130px;column-gap:20px;align-items:center}
+.pares .lab{font:500 13.5px var(--mono);color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pares .duo{display:flex;flex-direction:column;gap:6px;padding:12px 0;position:relative}
+.pares .b{display:flex;align-items:center;height:18px}
+.pares .b i{display:block;height:100%;width:0;border-radius:0 5px 5px 0;transition:width 1.3s cubic-bezier(.2,.7,.2,1)}
+.pares .b span{margin-left:10px;font:400 11.5px var(--mono);color:var(--ink-3);white-space:nowrap}
+.pares .kpi2{text-align:right}
+.pares .kpi2 b{display:block;font:700 22px var(--display);color:var(--cyan-glow);text-shadow:0 0 14px rgba(34,211,238,.35);font-variant-numeric:tabular-nums}
+.pares .kpi2 b.zero{color:var(--ink-3);text-shadow:none}
+.pares .kpi2 small{font:500 11.5px var(--mono);color:var(--ink-3)}
+.pares .kpi2 small.pos{color:var(--good)}.pares .kpi2 small.neg{color:var(--alert)}
+.pares-head{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);text-align:right}
+.pares-axis{position:relative;height:22px;grid-column:2}
+.pares-axis span{position:absolute;top:4px;transform:translateX(-50%);font:400 11px var(--mono);color:var(--ink-3)}
+.pares-grid{position:absolute;top:0;bottom:0;width:1px;background:var(--grid)}
+.pares .row{display:contents}
+.pares .row:hover .lab{color:var(--cyan-glow)}
 
 /* tooltip */
-.tip{position:fixed;z-index:50;pointer-events:none;min-width:180px;max-width:300px;padding:10px 12px;border-radius:12px;
-  background:rgba(10,16,34,.94);border:1px solid var(--line-hi);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  box-shadow:0 10px 30px rgba(0,0,0,.5);font-size:12.5px;color:var(--ink-2);opacity:0;transition:opacity .15s}
+.tip{position:fixed;z-index:50;pointer-events:none;min-width:190px;max-width:320px;padding:12px 14px;border-radius:10px;
+  background:rgba(8,12,26,.96);border:1px solid rgba(148,197,255,.2);box-shadow:0 14px 36px rgba(0,0,0,.55);
+  font:400 12px/1.7 var(--mono);color:var(--ink-3);opacity:0;transition:opacity .15s}
 .tip.on{opacity:1}
 .tip .t{color:var(--ink);font-weight:600;margin-bottom:4px}
-.tip .k{display:flex;justify-content:space-between;gap:14px;font-variant-numeric:tabular-nums}
+.tip .k{display:flex;justify-content:space-between;gap:18px;font-variant-numeric:tabular-nums}
 .tip .k b{color:var(--ink);font-weight:600}
 .tip .sep{margin-top:6px;border-top:1px solid rgba(148,163,200,.15);padding-top:6px}
 
 /* tabelas */
 details{margin-top:14px}
-summary{cursor:pointer;color:var(--ink-2);font-weight:500;list-style:none;display:inline-flex;align-items:center;gap:8px}
+summary{cursor:pointer;color:var(--ink-2);font:500 12.5px var(--mono);list-style:none;display:inline-flex;align-items:center;gap:8px}
 summary::-webkit-details-marker{display:none}
 summary::before{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);transition:transform .2s}
 details[open] summary::before{transform:rotate(45deg)}
-.tables{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:14px}
+.tables{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:14px}
 .tbl{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:12.5px;font-variant-numeric:tabular-nums}
+table{width:100%;border-collapse:collapse;font:400 12px var(--mono);font-variant-numeric:tabular-nums}
 th,td{padding:7px 8px;text-align:left;border-bottom:1px solid rgba(148,163,200,.1);white-space:nowrap}
-th{color:var(--ink-3);font-weight:500;text-transform:uppercase;letter-spacing:.06em;font-size:11px}
+th{color:var(--ink-3);font-weight:500;text-transform:uppercase;letter-spacing:.08em;font-size:10.5px}
 td.n,th.n{text-align:right}
-caption{text-align:left;color:var(--ink);font-weight:600;padding-bottom:8px}
-footer{margin-top:28px;color:var(--ink-3);font-size:12px;line-height:1.7}
+caption{text-align:left;color:var(--ink);font:600 14px var(--display);padding-bottom:8px}
+footer{margin-top:30px;color:var(--ink-3);font:400 11.5px/1.8 var(--mono)}
 
-@media (max-width:1200px){
-  .acoes{grid-template-columns:1fr}
-  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .span-7,.span-5{grid-column:span 12}
-}
+@media (max-width:1560px){ .kpis{grid-template-columns:repeat(3,minmax(0,1fr))} }
+@media (max-width:1100px){ .acoes{grid-template-columns:1fr} .span-6{grid-column:span 12} }
 @media (max-width:720px){
-  .rows.wide .row{grid-template-columns:1fr 64px}
-  .wrap{padding:22px 16px 36px}
-  h1{font-size:23px}
-  .kpis{gap:12px}
-  .kpi .val{font-size:24px}
-  .card{padding:18px 16px}
+  .wrap{padding:26px 16px 40px}
+  h1{font-size:32px}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .kpi{padding:20px 16px}
+  .kpi .val{font-size:26px}
+  .card{padding:20px 16px}
   .tables{grid-template-columns:1fr}
-  .row{grid-template-columns:1fr 64px;gap:6px 10px}
-  .row .track{grid-column:1 / -1;grid-row:2}
+  .hb{grid-template-columns:1fr 52px}
+  .hb .lab{text-align:left;grid-column:1 / -1}
+  .hb .bar{grid-column:1}
+  .hb .step{grid-column:1 / -1;padding-left:0}
+  .pares{grid-template-columns:1fr 92px;column-gap:12px}
+  .pares .lab{grid-column:1 / -1;padding-top:10px}
+  .pares .hide-m,.pares-axis{display:none}
+  .chip{white-space:normal;letter-spacing:.08em}
+  .pares .duo{padding:6px 0 10px}
+  .pares .kpi2 b{font-size:18px}
 }
-@media (max-width:460px){.kpis{grid-template-columns:1fr}}
+@media (max-width:440px){ .kpis{grid-template-columns:1fr} }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .card{opacity:1;transform:none}
-  .grow{transform:none!important}.draw{stroke-dashoffset:0!important}
+  .grow{transform:none!important}.draw{stroke-dashoffset:0!important}.fade{opacity:1!important}
 }
 @media print{
   body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .card{opacity:1;transform:none;animation:none}
-  .grow{transform:none;animation:none}.draw{stroke-dashoffset:0;animation:none}
+  .grow{transform:none;animation:none}.draw{stroke-dashoffset:0;animation:none}.fade{opacity:1;animation:none}
 }
 </style>
 </head>
@@ -197,84 +223,83 @@ footer{margin-top:28px;color:var(--ink-3);font-size:12px;line-height:1.7}
 <div class="wrap">
   <header>
     <div>
-      <div class="eyebrow">Painel executivo · Obra</div>
-      <h1 id="titulo"></h1>
-      <div class="sub" id="subtitulo"></div>
+      <div class="eyebrow" id="eyebrow"></div>
+      <h1>Painel Executivo</h1>
+      <div class="resumo" id="resumo"></div>
     </div>
-    <div class="pill"><span class="dot"></span>Pagamentos de <b id="periodo"></b></div>
+    <div class="pill" id="pill"></div>
   </header>
 
-  <div class="section-title">Onde agir agora</div>
-  <section class="acoes" id="acoes"></section>
-
-  <div class="section-title">Situação em números</div>
   <section class="kpis" id="kpis"></section>
 
-  <div class="section-title">Orçamento: onde estamos e onde está o dinheiro</div>
-  <section class="grid">
-    <article class="card span-7" style="animation-delay:.5s">
+  <div class="sec">Onde agir agora</div>
+  <section class="acoes" id="acoes"></section>
+
+  <section class="grid" style="margin-top:20px">
+    <article class="card span-12" style="animation-delay:.5s">
       <div class="head">
         <div>
-          <h2>Orçado x realizado por grupo</h2>
-          <p class="desc">Barra lilás = orçado do grupo (em escala do maior). Barra ciano = já pago. À direita, % do orçado consumido.</p>
+          <h2>Trajetória de pagamentos e de atividade em campo</h2>
+          <p class="desc">Pagamentos pela data do comprovante; atividade pela data do registro no diário de obra. Escalas diferentes, painéis separados — sobrepor as curvas num eixo só sugeriria uma relação que os dados não mostram.</p>
         </div>
-        <div class="legend">
-          <span><i class="sw" style="background:rgba(139,92,246,.25);border:1px solid rgba(167,139,250,.6)"></i>Orçado</span>
-          <span><i class="sw" style="background:var(--cyan-glow)"></i>Realizado</span>
-          <span><i class="sw" style="background:var(--alert)"></i>Acima do orçado</span>
-        </div>
+        <span class="chip" id="chip-traj"></span>
       </div>
-      <div class="rows" id="grupos"></div>
-      <p class="leitura" id="l-grupos"></p>
+      <div class="chart" id="traj"></div>
+      <div class="legend">
+        <span><i class="sw" style="background:linear-gradient(90deg,var(--cyan-glow),var(--violet-glow))"></i>Pago acumulado</span>
+        <span><i class="sw" style="background:var(--cyan-glow)"></i>Pagamento direto (na EAP)</span>
+        <span><i class="sw" style="background:var(--violet-glow)"></i>Reembolso (fora da EAP)</span>
+        <span><i class="sw line" style="background:var(--amber-glow)"></i>Média móvel de 3 períodos</span>
+        <span><i class="sw ring"></i>Registros no diário de obra</span>
+      </div>
+      <p class="leitura" id="l-traj"></p>
     </article>
 
-    <article class="card span-5" style="animation-delay:.6s">
+    <article class="card span-6" style="animation-delay:.6s">
       <div class="head">
         <div>
           <h2>Onde está o saldo a contratar</h2>
-          <p class="desc" id="d-itens"></p>
+          <p class="desc">Maiores itens da EAP pelo valor que ainda falta pagar. É aqui que preço e negociação mudam o custo final.</p>
         </div>
-        <div class="legend">
-          <span><i class="sw" style="background:var(--cyan-glow)"></i>Obra</span>
-          <span><i class="sw" style="background:var(--violet-glow)"></i>Ambientação</span>
-        </div>
+        <span class="chip" id="chip-itens"></span>
       </div>
-      <div class="rows wide" id="itens"></div>
+      <div id="itens"></div>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--cyan-glow)"></i>Obra</span>
+        <span><i class="sw" style="background:var(--violet-glow)"></i>Ambientação</span>
+      </div>
       <p class="leitura" id="l-itens"></p>
     </article>
-  </section>
 
-  <div class="section-title">Pagamentos: ritmo e origem</div>
-  <section class="grid">
-    <article class="card span-7" style="animation-delay:.7s">
-      <div class="head">
-        <div>
-          <h2 id="h-evo">Pagamentos por dia</h2>
-          <p class="desc">Lançamentos no orçamento e reembolsos, empilhados. A linha âmbar é a média móvel de 3 períodos.</p>
-        </div>
-        <div class="legend">
-          <span><i class="sw" style="background:var(--cyan-glow)"></i>Pagamento direto (na EAP)</span>
-          <span><i class="sw" style="background:var(--violet-glow)"></i>Reembolso (fora da EAP)</span>
-          <span><i class="sw line" style="background:var(--amber-glow);box-shadow:0 0 8px var(--amber-glow)"></i>Média móvel</span>
-        </div>
-      </div>
-      <div class="chart" id="evo"></div>
-      <p class="leitura" id="l-evo"></p>
-    </article>
-
-    <article class="card span-5" style="animation-delay:.8s">
+    <article class="card span-6" style="animation-delay:.7s">
       <div class="head">
         <div>
           <h2>Por onde o dinheiro saiu</h2>
-          <p class="desc">Valor, quantidade e ticket médio por canal de pagamento</p>
+          <p class="desc">Todo pagamento do período por canal. Só o pagamento direto tem código da EAP e entra no orçado x realizado.</p>
         </div>
+        <span class="chip alert" id="chip-canais"></span>
       </div>
-      <div class="rows wide" id="canais"></div>
+      <div id="canais"></div>
       <p class="leitura" id="l-canais"></p>
     </article>
-  </section>
 
-  <section class="grid" style="margin-top:18px">
+    <article class="card span-12" style="animation-delay:.8s">
+      <div class="head">
+        <div>
+          <h2>Cada grupo consome o que pesa?</h2>
+          <p class="desc">Fatia do orçamento contra fatia do que já foi pago, na mesma escala. Comparar reais orçados com reais pagos lado a lado não funciona — com <span id="pct-cons"></span> consumido, as barras de pago sumiriam.</p>
+        </div>
+        <span class="chip" id="chip-pares"></span>
+      </div>
+      <div class="pares" id="pares"></div>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--amber-glow)"></i>Fatia do orçamento</span>
+        <span><i class="sw" style="background:linear-gradient(90deg,var(--cyan-glow),var(--violet-glow))"></i>Fatia do pago (na EAP)</span>
+        <span style="color:var(--ink-3)">Barra de pago maior que a de orçamento = grupo recebendo antes do seu peso</span>
+      </div>
+      <p class="leitura" id="l-pares"></p>
+    </article>
+
     <article class="card span-12" style="animation-delay:.9s">
       <h2>Dados de origem</h2>
       <p class="desc">Os mesmos números dos gráficos, em tabela</p>
@@ -291,169 +316,261 @@ footer{margin-top:28px;color:var(--ink-3);font-size:12px;line-height:1.7}
 
 <script>
 const DADOS = /*__DADOS__*/null;
+const ANTERIOR = /*__ANTERIOR__*/null;
 </script>
 <script>
 /*__ANALISE__*/
 </script>
 <script>
 const A = analisar(DADOS);
+const AP = ANTERIOR ? analisar(ANTERIOR) : null;
 const {brl, brl0, pct, num, mil, dm, data} = fmt;
 const NS = "http://www.w3.org/2000/svg";
 const el = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const $ = id => document.getElementById(id);
+const lead = k => `<b>${A.chamadas[k]}</b> `;
+const milc = v => "R$ " + num(v / 1000, 2) + " mil";          // R$ 7,07 mil
+const curtoV = v => v >= 1000 ? milc(v) : brl0(v);
 
 const tip = $("tip");
 function showTip(html, x, y) {
   tip.innerHTML = html; tip.classList.add("on");
   const r = tip.getBoundingClientRect();
-  let left = x + 14, top = y + 14;
-  if (left + r.width > innerWidth - 8) left = x - r.width - 14;
-  if (top + r.height > innerHeight - 8) top = y - r.height - 14;
+  let left = x + 16, top = y + 16;
+  if (left + r.width > innerWidth - 8) left = x - r.width - 16;
+  if (top + r.height > innerHeight - 8) top = y - r.height - 16;
   tip.style.left = Math.max(8, left) + "px"; tip.style.top = Math.max(8, top) + "px";
 }
 const hideTip = () => tip.classList.remove("on");
 const hover = (node, html) => { node.addEventListener("pointermove", ev => showTip(html(), ev.clientX, ev.clientY)); node.addEventListener("pointerleave", hideTip); };
 const kv = (k, v) => `<div class="k"><span>${k}</span><b>${v}</b></div>`;
 
-/* ---------- cabeçalho ---------- */
-$("titulo").textContent = DADOS.projeto.split(" · ")[0] + " — " + DADOS.projeto.split(" · ").slice(1).join(", ");
-$("subtitulo").textContent = `Orçado x realizado, pagamentos e reembolsos · ${DADOS.cidade}`;
-$("periodo").textContent = `${dm(A.periodo.inicio)} a ${data(A.periodo.fim)}`;
+/* ================= cabeçalho ================= */
+const [nomeProj] = DADOS.projeto.split(" · ");
+$("eyebrow").textContent = `${nomeProj} · Diretoria de obras`;
+$("resumo").textContent = `${milc(A.orcTotal)} orçados · ${A.pagamentos.length} pagamentos · ${milc(A.totalPago)} pagos · ${(DADOS.diario || []).length} registros no diário de obra`;
+const mesNome = iso => new Date(iso.slice(0, 7) + "-15T12:00").toLocaleDateString("pt-BR", {month: "short", year: "numeric"}).replace(". de ", "/").replace(" de ", "/");
+$("pill").innerHTML = `${dm(A.periodo.inicio)} – ${data(A.periodo.fim)}<i></i>` +
+  (AP ? `variação: vs ${mesNome(AP.periodo.fim)}` : `base: orçamento executivo`);
 
-/* ---------- onde agir agora ---------- */
-const tipoTag = {risco: "Risco de estouro", oportunidade: "Economia", controle: "Controle", verificar: "Verificar"};
-$("acoes").innerHTML = A.plano.slice(0, 3).map((a, i) => {
-  const [imp, ...resto] = a.impactoTxt.split(" · ");
-  return `<article class="card acao" style="animation-delay:${i * .08}s">
-    <div class="top"><span class="num">${i + 1}</span><span class="tag">${tipoTag[a.tipo]}</span></div>
-    <h3>${a.curto}</h3>
-    <div class="imp">${imp}${resto.map(r => `<span class="alerta">⚠ ${r}</span>`).join("")}</div>
-    <p>${a.titulo}. ${a.acao}.</p>
-    <div class="meta"><span>Responsável: <b>${a.responsavel}</b></span><span>Até <b>${dm(a.prazo)}</b></span></div>
-  </article>`;
-}).join("");
-
-/* ---------- KPIs ---------- */
-const obra = A.grupos.filter(g => g.cod.startsWith("001")).reduce((s, g) => s + g.orc, 0);
+/* ================= KPIs ================= */
+const estouros = A.achados.flatMap(a => a.estouros || []);
+const estTotal = estouros.reduce((s, e) => s + e.excesso, 0);
+const eco = A.achados.filter(a => a.tipo === "oportunidade").reduce((s, a) => s + a.impacto, 0);
+const obraOrc = A.grupos.filter(g => g.cod.startsWith("001")).reduce((s, g) => s + g.orc, 0);
+// sobe: true = subir é bom · false = subir é ruim · null = neutro
 const kpis = [
-  {lbl: "Orçamento total", v: A.orcTotal, f: brl0,
-    note: `Obra <b>${mil(obra)}</b> + ambientação <b>${mil(A.orcTotal - obra)}</b>`},
-  {lbl: "Consumido do orçamento", v: A.realEap, f: brl0, meter: A.realEap / A.orcTotal,
-    note: `<b>${pct(A.realEap / A.orcTotal)}</b> do total · saldo de <b>${mil(A.saldoTotal)}</b>`},
-  {lbl: "Pago no período", v: A.totalPago, f: brl0,
-    note: `<b>${A.pagamentos.length}</b> pagamentos em <b>${A.diasComPagto}</b> ${A.mensal ? "meses" : "dias"} · inclui reembolsos`},
-  {lbl: "Fora do orçado x realizado", v: A.totalReemb, f: brl0, warn: true,
-    note: `<b>${pct(A.reembParte)}</b> do que foi pago · reembolsos sem vínculo com a EAP`},
+  {lbl: "Orçamento total", get: X => X.orcTotal, sobe: null,
+    badge: ["", `${pct(obraOrc / A.orcTotal, 0)} obra · ${pct(1 - obraOrc / A.orcTotal, 0)} amb.`],
+    cmp: `obra ${milc(obraOrc)} · ambientação ${milc(A.orcTotal - obraOrc)}`},
+  {lbl: "Consumido (EAP)", get: X => X.realEap, sobe: null,
+    badge: ["", `${pct(A.realEap / A.orcTotal)} do orçado`], cmp: `saldo de ${milc(A.saldoTotal)}`},
+  {lbl: "Pago no período", get: X => X.totalPago, sobe: null,
+    badge: ["", `${A.pagamentos.length} pagamentos`], cmp: `EAP ${milc(A.realEap)} + reembolsos ${milc(A.totalReemb)}`},
+  {lbl: "Fora do controle", get: X => X.totalReemb, sobe: false,
+    badge: ["bad", `↑ ${pct(A.reembParte)} do pago`], cmp: `realizado ${milc(A.realEap)} → ${milc(A.realEap + A.totalReemb)} se vinculado`},
+  {lbl: "Economia possível", get: () => eco, sobe: true,
+    badge: ["good", `premissa ${pct(A.PREMISSAS.economiaNegociacao, 0)}`],
+    cmp: A.achados.filter(a => a.tipo === "oportunidade").map(a => a.titulo.split(":")[0].toLowerCase()).join(", ") + " ainda não contratada"},
+  {lbl: "Estouro já ocorrido", get: () => estTotal, sobe: false,
+    badge: estTotal ? ["bad", `↑ +${pct(estouros[0].excesso / estouros[0].item.orc)} no item`] : ["good", "nenhum item"],
+    cmp: estTotal ? estouros.map(e => `${brl0(e.item.orc)} → ${brl0(e.item.orc + e.excesso)} (${e.cat})`).join("; ") : "nenhum item acima do orçado"},
 ];
-$("kpis").innerHTML = kpis.map((k, i) => `<div class="card kpi${k.warn ? " warn" : ""}" style="animation-delay:${.25 + i * .06}s">
-  <div class="lbl">${k.lbl}</div><div class="val" data-i="${i}">${k.f(0)}</div>` +
-  (k.meter != null ? `<div class="meter"><i data-w="${k.meter}"></i></div>` : "") +
-  `<div class="note">${k.note}</div></div>`).join("");
+// com mês anterior: o selo passa a mostrar a variação e a linha, o "antes → depois"
+if (AP) kpis.forEach(k => {
+  if (["Economia possível", "Estouro já ocorrido"].includes(k.lbl)) return;
+  const a = k.get(AP), b = k.get(A); if (!a) return;
+  const d = (b - a) / a, seta = Math.abs(d) < .0005 ? "→" : d > 0 ? "↑" : "↓";
+  const cls = k.sobe === null || seta === "→" ? "" : (d > 0) === k.sobe ? "good" : "bad";
+  k.badge = [cls, `${seta} ${d > 0 ? "+" : ""}${pct(d)}`]; k.cmp = `${curtoV(a)} → ${curtoV(b)}`;
+});
+const valHTML = v => v >= 1000 ? `<small class="pre">R$</small>${num(v / 1000, 2)}<small>mil</small>` : `<small class="pre">R$</small>${num(v, 0)}`;
+$("kpis").innerHTML = kpis.map((k, i) => `<div class="card kpi" style="animation-delay:${i * .06}s">
+  <div class="lbl">${k.lbl}</div><div class="val" data-i="${i}">${valHTML(0)}</div>
+  <div><span class="badge ${k.badge[0]}">${k.badge[1]}</span></div><div class="cmp">${k.cmp}</div></div>`).join("");
 function countUp() {
   document.querySelectorAll(".kpi .val").forEach(v => {
-    const k = kpis[+v.dataset.i], t0 = performance.now();
-    if (reduce) { v.textContent = k.f(k.v); return; }
+    const k = kpis[+v.dataset.i], alvo = k.get(A), t0 = performance.now();
+    if (reduce) { v.innerHTML = valHTML(alvo); return; }
     const step = t => { const p = Math.min(1, (t - t0) / 1400), e = 1 - Math.pow(1 - p, 3);
-      v.textContent = k.f(k.v * e); if (p < 1) requestAnimationFrame(step); };
+      v.innerHTML = valHTML(alvo >= 1000 ? Math.max(1000, alvo * e) : alvo * e); if (p < 1) requestAnimationFrame(step); };
     requestAnimationFrame(step);
   });
 }
 
-/* ---------- orçado x realizado por grupo ---------- */
-(() => {
-  const arr = A.grupos.slice().sort((a, b) => b.orc - a.orc), max = arr[0].orc;
-  $("grupos").innerHTML = arr.map(g => { const e = g.real / g.orc, over = e > 1;
-    return `<div class="row" data-c="${g.cod}">
-      <div class="nm">${g.nome}<small>${brl0(g.real)} de ${brl0(g.orc)}</small></div>
-      <div class="track"><span class="bud" data-w="${g.orc / max}"></span><span class="real${over ? " over" : ""}" data-w="${Math.min(g.real, g.orc) / max}"></span></div>
-      <div class="v ${e === 0 ? "zero" : ""} ${over ? "over" : ""}">${pct(e)}</div></div>`; }).join("");
-  $("grupos").querySelectorAll(".row").forEach(r => { const g = A.grupos.find(x => x.cod === r.dataset.c);
-    hover(r, () => `<div class="t">${g.cod} · ${g.nome}</div>${kv("Orçado", brl(g.orc))}${kv("Realizado", brl(g.real))}${kv("Saldo", brl(g.saldo))}${kv("% consumido", pct(g.real / g.orc))}${kv("Peso no orçamento", pct(g.orc / A.orcTotal))}`); });
-  $("l-grupos").textContent = A.frases.grupos;
-})();
+/* ================= onde agir agora ================= */
+const tipoTag = {risco: "risco de estouro", oportunidade: "economia", controle: "controle", verificar: "verificar"};
+$("acoes").innerHTML = A.plano.slice(0, 3).map((a, i) => {
+  const [imp, ...resto] = a.impactoTxt.split(" · ");
+  return `<article class="card acao" style="animation-delay:${.35 + i * .07}s">
+    <div class="top"><span class="num">0${i + 1} · ${tipoTag[a.tipo]}</span></div>
+    <h3>${a.curto}</h3>
+    <div class="imp">${imp}${resto.map(r => `<small>▲ ${r}</small>`).join("")}</div>
+    <p>${a.titulo}. ${a.acao}.</p>
+    <div class="meta"><span>resp.: <b>${a.responsavel}</b></span><span>até <b>${dm(a.prazo)}</b></span></div>
+  </article>`;
+}).join("");
 
-/* ---------- onde está o saldo ---------- */
-(() => {
-  const arr = A.topSaldo, max = arr[0].saldo, soma = arr.reduce((s, i) => s + i.saldo, 0);
-  $("d-itens").textContent = `Os ${arr.length} maiores itens da EAP pelo valor que falta pagar (${pct(soma / A.saldoTotal, 0)} do saldo)`;
-  $("itens").innerHTML = arr.map(i => `<div class="row" data-c="${i.cod}">
-      <div class="nm" title="${i.nome}">${fmt.curto(i.nome)}<small>${i.grupo} · ${i.cod}</small></div>
-      <div class="track"><span class="fill ${i.macro === "002" ? "c-amb" : "c-obra"}" data-w="${i.saldo / max}"></span></div>
-      <div class="v">${mil(i.saldo).replace("R$ ", "")}</div></div>`).join("");
-  $("itens").querySelectorAll(".row").forEach(r => { const i = A.itens.find(x => x.cod === r.dataset.c);
-    hover(r, () => `<div class="t">${i.cod} · ${fmt.curto(i.nome)}</div>${kv("Grupo", i.grupo)}${kv("Orçado", brl(i.orc))}${kv("Já pago", brl(i.real))}${kv("Falta pagar", brl(i.saldo))}${kv("% do saldo total", pct(i.saldo / A.saldoTotal))}`); });
-  $("l-itens").textContent = A.frases.itens;
-})();
-
-/* ---------- pagamentos por período ---------- */
-function drawEvo() {
-  const box = $("evo"); box.innerHTML = "";
-  const S = A.serie, W = box.clientWidth, H = Math.max(240, Math.min(320, W * .42));
-  const m = {t: 16, r: 8, b: 30, l: W < 500 ? 46 : 58};
-  const iw = W - m.l - m.r, ih = H - m.t - m.b;
-  const top = Math.max(...S.map(s => s.total));
-  const stepV = top > 20000 ? 10000 : top > 8000 ? 2000 : top > 4000 ? 1000 : 500;
-  const yMax = Math.ceil(top * 1.08 / stepV) * stepV;
-  const band = iw / S.length, bw = Math.min(40, band * .62);
-  const X = i => m.l + band * i + band / 2, Y = v => m.t + ih - v / yMax * ih;
-  const svg = el("svg", {viewBox: `0 0 ${W} ${H}`, height: H, role: "img", "aria-label": "Pagamentos por período, divididos entre lançamentos na EAP e reembolsos"}, box);
+/* ================= trajetória (3 painéis, eixo x compartilhado) ================= */
+function drawTraj() {
+  const box = $("traj"); box.innerHTML = "";
+  const S = A.serie, W = box.clientWidth, narrow = W < 560;
+  const m = {l: narrow ? 50 : 84, r: narrow ? 12 : 90};
+  const P = [{id: "acum", h: narrow ? 150 : 190, lbl: "PAGO ACUMULADO"}, {id: "dia", h: narrow ? 110 : 130, lbl: A.mensal ? "PAGO NO MÊS" : "PAGO NO DIA"},
+             {id: "reg", h: 54, lbl: "REGISTROS NO DIÁRIO DE OBRA"}];
+  const gapP = 44; let y = 26; P.forEach(p => { p.y = y; y += p.h + gapP; });
+  const H = y - gapP + 30, iw = W - m.l - m.r, band = iw / S.length;
+  const X = i => m.l + band * i + band / 2;
+  const svg = el("svg", {viewBox: `0 0 ${W} ${H}`, height: H, role: "img", "aria-label": "Pagamento acumulado, pagamentos por período e registros no diário de obra"}, box);
   const defs = el("defs", {}, svg);
-  const f = el("filter", {id: "glow", x: "-20%", y: "-50%", width: "140%", height: "200%"}, defs);
-  el("feGaussianBlur", {stdDeviation: 3.5, result: "b"}, f);
-  const mg = el("feMerge", {}, f); el("feMergeNode", {in: "b"}, mg); el("feMergeNode", {in: "SourceGraphic"}, mg);
-  [["gC", "#22d3ee", "#08a4bf"], ["gV", "#a78bfa", "#8b5cf6"]].forEach(([id, a, b]) => {
+  const glow = el("filter", {id: "glow", x: "-20%", y: "-60%", width: "140%", height: "220%"}, defs);
+  el("feGaussianBlur", {stdDeviation: 4, result: "b"}, glow);
+  const mg = el("feMerge", {}, glow); el("feMergeNode", {in: "b"}, mg); el("feMergeNode", {in: "SourceGraphic"}, mg);
+  const lg = el("linearGradient", {id: "gLine", x1: 0, y1: 0, x2: 1, y2: 0}, defs);
+  el("stop", {offset: "0%", "stop-color": "#22d3ee"}, lg); el("stop", {offset: "100%", "stop-color": "#a78bfa"}, lg);
+  const ag = el("linearGradient", {id: "gArea", x1: 0, y1: 0, x2: 0, y2: 1}, defs);
+  el("stop", {offset: "0%", "stop-color": "#22d3ee", "stop-opacity": .28}, ag); el("stop", {offset: "100%", "stop-color": "#8b5cf6", "stop-opacity": 0}, ag);
+  [["gC", "#22d3ee", "#0e7490"], ["gV", "#a78bfa", "#6d28d9"]].forEach(([id, a, b]) => {
     const g = el("linearGradient", {id, x1: 0, y1: 0, x2: 0, y2: 1}, defs);
-    el("stop", {offset: "0%", "stop-color": a}, g); el("stop", {offset: "100%", "stop-color": b, "stop-opacity": .75}, g);
-  });
+    el("stop", {offset: "0%", "stop-color": a}, g); el("stop", {offset: "100%", "stop-color": b, "stop-opacity": .8}, g); });
+  const nice = v => { const p = Math.pow(10, Math.floor(Math.log10(v))); return Math.ceil(v / p * 2) / 2 * p; };
+  const fmtEixo = v => { const r = narrow ? "" : "R$ "; return v === 0 ? r + "0" : v >= 1000 ? `${r}${num(v / 1000, v % 1000 ? 1 : 0)} mil` : `${r}${num(v)}`; };
   const ax = el("g", {class: "axis"}, svg);
-  for (let v = 0; v <= yMax; v += stepV) {
-    el("line", {x1: m.l, x2: m.l + iw, y1: Y(v), y2: Y(v), class: "gridl"}, ax);
-    const t = el("text", {x: m.l - 10, y: Y(v) + 4, "text-anchor": "end"}, ax);
-    t.textContent = v === 0 ? "R$ 0" : v >= 1000 ? `R$ ${num(v / 1000)} mil` : `R$ ${v}`;
-  }
-  const every = W < 500 ? 2 : 1;
-  S.forEach((s, i) => { if (i % every) return;
-    const t = el("text", {x: X(i), y: H - 8, "text-anchor": "middle"}, ax); t.textContent = A.mensal ? s.k : dm(s.k); });
+  P.forEach(p => { const t = el("text", {x: m.l, y: p.y - 12, class: "plabel"}, svg); t.textContent = p.lbl; });
 
+  // painel 1: acumulado
+  const p1 = P[0], y1Max = nice(S[S.length - 1].acum * 1.1);
+  const Y1 = v => p1.y + p1.h - v / y1Max * p1.h;
+  [0, y1Max / 2, y1Max].forEach(v => { el("line", {x1: m.l, x2: m.l + iw, y1: Y1(v), y2: Y1(v), class: "gridl"}, ax);
+    const t = el("text", {x: m.l - 12, y: Y1(v) + 4, "text-anchor": "end"}, ax); t.textContent = fmtEixo(v); });
+  const pts = S.map((s, i) => [X(i), Y1(s.acum)]);
+  const path = pts.map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + "," + p[1].toFixed(1)).join("");
+  el("path", {d: path + `L${X(S.length - 1)},${Y1(0)}L${X(0)},${Y1(0)}Z`, fill: "url(#gArea)", class: "fade"}, svg);
+  const ln = el("path", {d: path, stroke: "url(#gLine)", "stroke-width": 2.5, fill: "none", filter: "url(#glow)", "stroke-linejoin": "round", class: "draw"}, svg);
+  ln.style.setProperty("--len", ln.getTotalLength());
+  [0, S.length - 1].forEach(i => el("circle", {cx: pts[i][0], cy: pts[i][1], r: 5, fill: "#060b19", stroke: i ? "#a78bfa" : "#22d3ee", "stroke-width": 2, class: "fade"}, svg));
+  const fim = el("text", {x: pts[S.length - 1][0] + 12, y: pts[S.length - 1][1] + 4, fill: "#c4b5fd", "font-size": 12, "font-weight": 600, class: "fade"}, svg);
+  fim.textContent = narrow ? "" : milc(S[S.length - 1].acum);
+
+  // painel 2: pago no período (empilhado) + média móvel
+  const p2 = P[1], y2Max = nice(Math.max(...S.map(s => s.total)) * 1.1);
+  const Y2 = v => p2.y + p2.h - v / y2Max * p2.h, bw = Math.min(34, band * .6);
+  [0, y2Max / 2, y2Max].forEach(v => { el("line", {x1: m.l, x2: m.l + iw, y1: Y2(v), y2: Y2(v), class: "gridl"}, ax);
+    const t = el("text", {x: m.l - 12, y: Y2(v) + 4, "text-anchor": "end"}, ax); t.textContent = fmtEixo(v); });
+  S.forEach((s, i) => { let base = Y2(0);
+    [["eap", "url(#gC)"], ["reembolso", "url(#gV)"]].forEach(([k, f]) => { if (!s[k]) return;
+      const h = Math.max(2, s[k] / y2Max * p2.h), gap = base < Y2(0) ? 2 : 0;
+      const r = el("rect", {x: X(i) - bw / 2, y: base - h, width: bw, height: Math.max(1, h - gap), rx: 4, fill: f, class: "grow"}, svg);
+      r.style.animationDelay = (.5 + i * .04) + "s"; base -= h; }); });
+  const mm = S.map((s, i) => (i ? "L" : "M") + X(i).toFixed(1) + "," + Y2(s.media).toFixed(1)).join("");
+  const ml = el("path", {d: mm, stroke: "#eab308", "stroke-width": 2, fill: "none", "stroke-linejoin": "round", class: "draw", opacity: .95}, svg);
+  ml.style.setProperty("--len", ml.getTotalLength());
+  if (!narrow) { const t = el("text", {x: X(S.length - 1) + 12, y: Y2(S[S.length - 1].media) - 10, fill: "#eab308", "font-size": 11.5, "font-weight": 600, class: "fade"}, svg); t.textContent = "média 3"; }
+
+  // painel 3: registros no diário
+  const p3 = P[2], maxR = Math.max(1, ...S.map(s => s.registros)), cy = p3.y + p3.h / 2 + 4;
+  el("line", {x1: m.l, x2: m.l + iw, y1: cy, y2: cy, class: "gridl"}, ax);
   S.forEach((s, i) => {
-    const g = el("g", {}, svg); const x = X(i) - bw / 2; let base = m.t + ih;
-    [["eap", "url(#gC)"], ["reembolso", "url(#gV)"]].forEach(([k, fill]) => {
-      const v = s[k]; if (!v) return;
-      const h = Math.max(2, v / yMax * ih); const gap = base < m.t + ih ? 2 : 0;
-      const r = el("rect", {x, y: base - h, width: bw, height: Math.max(1, h - gap), rx: 3, fill, class: "grow"}, g);
-      r.style.animationDelay = (.5 + i * .05) + "s"; base -= h;
-    });
-    if (s.total === Math.max(...S.map(x => x.total))) {
-      const t = el("text", {x: X(i), y: Y(s.total) - 8, "text-anchor": "middle", fill: "#f1f5ff", "font-size": 12, "font-weight": 600}, g);
-      t.textContent = brl0(s.total);
-    }
-    const hit = el("rect", {x: m.l + band * i, y: m.t, width: band, height: ih, fill: "transparent"}, svg);
-    hit.addEventListener("pointerenter", () => g.setAttribute("filter", "url(#glow)"));
-    hit.addEventListener("pointerleave", () => { g.removeAttribute("filter"); hideTip(); });
-    hit.addEventListener("pointermove", ev => showTip(`<div class="t">${A.mensal ? s.k : data(s.k)}</div>${kv("Total", s.total ? brl(s.total) : "—")}${kv("Na EAP", brl(s.eap))}${kv("Reembolsos", brl(s.reembolso))}${kv("Média móvel 3", brl0(s.media))}` +
-      (s.ps.length ? `<div class="sep">${s.ps.slice().sort((a, b) => b.valor - a.valor).slice(0, 5).map(p => kv(p.favorecido.split(" · ")[0].slice(0, 26), brl(p.valor))).join("")}</div>` : ""), ev.clientX, ev.clientY));
+    if (!s.registros) { el("circle", {cx: X(i), cy, r: 2, fill: "#5d6883"}, svg); return; }
+    el("circle", {cx: X(i), cy, r: 5 + 9 * s.registros / maxR, fill: "rgba(195,204,224,.08)", stroke: "#c3cce0", "stroke-width": 1.5, class: "fade"}, svg);
+    const t = el("text", {x: X(i), y: cy + 4, "text-anchor": "middle", fill: "#f1f5ff", "font-size": 11, "font-weight": 600, class: "fade"}, svg); t.textContent = s.registros;
   });
-  const line = S.map((s, i) => (i ? "L" : "M") + X(i).toFixed(1) + "," + Y(s.media).toFixed(1)).join("");
-  const p = el("path", {d: line, stroke: "#fbbf24", "stroke-width": 2, fill: "none", filter: "url(#glow)", "stroke-linejoin": "round", "stroke-linecap": "round", class: "draw", "pointer-events": "none"}, svg);
-  p.style.setProperty("--len", p.getTotalLength());
-}
-$("h-evo").textContent = A.mensal ? "Pagamentos por mês" : "Pagamentos por dia";
-$("l-evo").textContent = A.frases.evolucao;
 
-/* ---------- canais ---------- */
-(() => {
-  const arr = A.canais, max = arr[0].valor;
-  $("canais").innerHTML = arr.map(c => `<div class="row" data-c="${c.canal}">
-      <div class="nm">${c.canal}<small>${c.n} pagto${c.n > 1 ? "s" : ""} · ticket ${brl0(c.valor / c.n)}</small></div>
-      <div class="track"><span class="fill ${c.origem === "eap" ? "c-obra" : "c-reemb"}" data-w="${c.valor / max}"></span></div>
-      <div class="v">${pct(c.valor / A.totalPago)}</div></div>`).join("");
-  $("canais").querySelectorAll(".row").forEach(r => { const c = arr.find(x => x.canal === r.dataset.c);
-    hover(r, () => `<div class="t">${c.canal}</div>${kv("Valor", brl(c.valor))}${kv("Participação", pct(c.valor / A.totalPago))}${kv("Pagamentos", c.n)}${kv("Ticket médio", brl(c.valor / c.n))}${kv("No orçado x realizado?", c.origem === "eap" ? "Sim" : "Não")}`); });
-  $("l-canais").textContent = A.frases.canais;
+  // eixo x
+  const every = narrow ? Math.ceil(S.length / 6) : 1;
+  S.forEach((s, i) => { if (i % every) return; const t = el("text", {x: X(i), y: H - 6, "text-anchor": "middle"}, ax); t.textContent = A.mensal ? mesNome(s.k + "-01") : dm(s.k); });
+
+  // interação: coluna inteira
+  const cross = el("line", {y1: P[0].y - 4, y2: P[2].y + P[2].h, stroke: "rgba(167,139,250,.45)", "stroke-width": 1, opacity: 0, "pointer-events": "none"}, svg);
+  const hot = el("circle", {r: 6, fill: "#22d3ee", stroke: "#060b19", "stroke-width": 2, opacity: 0, filter: "url(#glow)", "pointer-events": "none"}, svg);
+  S.forEach((s, i) => {
+    const hit = el("rect", {x: m.l + band * i, y: P[0].y - 4, width: band, height: P[2].y + P[2].h - P[0].y + 4, fill: "transparent"}, svg);
+    hit.addEventListener("pointermove", ev => {
+      cross.setAttribute("x1", X(i)); cross.setAttribute("x2", X(i)); cross.setAttribute("opacity", 1);
+      hot.setAttribute("cx", X(i)); hot.setAttribute("cy", Y1(s.acum)); hot.setAttribute("opacity", 1);
+      showTip(`<div class="t">${A.mensal ? mesNome(s.k + "-01") : new Date(s.k + "T12:00").toLocaleDateString("pt-BR", {weekday: "long", day: "2-digit", month: "long"})}</div>` +
+        kv("Acumulado", brl0(s.acum)) + kv("No período", s.total ? brl(s.total) : "—") + kv("· na EAP", brl(s.eap)) + kv("· reembolsos", brl(s.reembolso)) +
+        kv("Média móvel 3", brl0(s.media)) + kv("Registros no diário", s.registros) +
+        (s.ps.length ? `<div class="sep">${s.ps.slice().sort((a, b) => b.valor - a.valor).slice(0, 4).map(p => kv(p.favorecido.split(" · ")[0].slice(0, 24), brl(p.valor))).join("")}</div>` : ""), ev.clientX, ev.clientY);
+    });
+    hit.addEventListener("pointerleave", () => { cross.setAttribute("opacity", 0); hot.setAttribute("opacity", 0); hideTip(); });
+  });
+}
+$("chip-traj").textContent = `${A.serie.length} ${A.mensal ? "meses" : "dias"}`;
+const semRegistro = A.serie.filter(s => s.total > 0 && !s.registros).length;
+$("l-traj").innerHTML = lead("evolucao") + A.frases.evolucao +
+  ` Dos ${A.diasComPagto} ${A.mensal ? "meses" : "dias"} com pagamento, ${semRegistro} não ${semRegistro === 1 ? "tem" : "têm"} registro no diário: o diário ainda não serve para confirmar se o serviço pago foi executado.`;
+
+/* ================= barras estilo funil ================= */
+function hbRow({lab, sub, w, cls, val, pc, key}) {
+  return `<div class="hb row" data-k="${key}"><div class="lab" title="${lab}">${lab}${sub ? `<small>${sub}</small>` : ""}</div>
+    <div class="bar"><span class="tr"></span><i class="fl ${cls}" data-w="${w}"></i><span class="vl">${val}</span></div><div class="pc">${pc}</div></div>`;
+}
+const stepRow = (txt, cls = "") => `<div class="hb"><div class="step ${cls}">${txt}</div></div>`;
+
+(() => {  // saldo a contratar
+  const arr = A.topSaldo, max = arr[0].saldo;
+  let acc = 0, html = "";
+  const corte = 5, soma5 = arr.slice(0, corte).reduce((s, i) => s + i.saldo, 0);
+  arr.forEach((i, n) => { acc += i.saldo;
+    html += hbRow({key: i.cod, lab: fmt.curto(i.nome), sub: i.grupo, w: i.saldo / max * .78, cls: i.macro === "002" ? "g-amb" : "g-obra",
+      val: milc(i.saldo).replace("R$ ", ""), pc: pct(i.saldo / A.saldoTotal)});
+    if (n === corte - 1 && arr.length > corte) html += stepRow(`▲ até aqui: ${corte} itens = ${pct(soma5 / A.saldoTotal)} do saldo · ${milc(soma5)}`, "warn");
+  });
+  $("itens").innerHTML = html;
+  $("chip-itens").textContent = `${corte} itens = ${pct(soma5 / A.saldoTotal, 0)} do saldo`;
+  $("itens").querySelectorAll(".row").forEach(r => { const i = A.itens.find(x => x.cod === r.dataset.k);
+    hover(r, () => `<div class="t">${i.cod} · ${fmt.curto(i.nome)}</div>${kv("Grupo", i.grupo)}${kv("Orçado", brl(i.orc))}${kv("Já pago", brl(i.real))}${kv("Falta pagar", brl(i.saldo))}${kv("% do saldo", pct(i.saldo / A.saldoTotal))}`); });
+  $("l-itens").innerHTML = lead("itens") + A.frases.itens;
 })();
 
-/* ---------- tabelas + rodapé ---------- */
+(() => {  // canais
+  const arr = A.canais.slice().sort((a, b) => (a.origem === "eap" ? -1 : 1) - (b.origem === "eap" ? -1 : 1) || b.valor - a.valor);
+  const max = Math.max(...arr.map(c => c.valor));
+  let html = "", marcou = false;
+  arr.forEach(c => {
+    if (c.origem !== "eap" && !marcou) { marcou = true;
+      html += stepRow(`▼ ${pct(A.reembParte)} do pago · ${brl0(A.totalReemb)} ficam fora do orçado x realizado`, "alert"); }
+    html += hbRow({key: c.canal, lab: c.canal.replace("Pagamento direto", "Direto").replace("Reembolso", "Reemb."), sub: `${c.n} pagto${c.n > 1 ? "s" : ""} · ticket ${brl0(c.valor / c.n)}`,
+      w: c.valor / max * .78, cls: c.origem === "eap" ? "g-obra" : "g-amb", val: milc(c.valor).replace("R$ ", ""), pc: pct(c.valor / A.totalPago)});
+  });
+  $("canais").innerHTML = html;
+  $("chip-canais").textContent = `${pct(A.reembParte)} fora da EAP`;
+  $("canais").querySelectorAll(".row").forEach(r => { const c = arr.find(x => x.canal === r.dataset.k);
+    hover(r, () => `<div class="t">${c.canal}</div>${kv("Valor", brl(c.valor))}${kv("Participação", pct(c.valor / A.totalPago))}${kv("Pagamentos", c.n)}${kv("Ticket médio", brl(c.valor / c.n))}${kv("No orçado x realizado?", c.origem === "eap" ? "sim" : "não")}`); });
+  $("l-canais").innerHTML = lead("canais") + A.frases.canais;
+})();
+
+(() => {  // cada grupo consome o que pesa?
+  const ord = A.grupos.slice().sort((a, b) => b.orc - a.orc);
+  const top = ord.slice(0, 5), resto = ord.slice(5);
+  const linhas = top.map(g => ({nome: g.nome, orc: g.orc, real: g.real, cod: g.cod}));
+  if (resto.length) linhas.push({nome: `Demais ${resto.length} grupos`, orc: resto.reduce((s, g) => s + g.orc, 0), real: resto.reduce((s, g) => s + g.real, 0), cod: "resto",
+    detalhe: resto.map(g => g.nome).join(", ")});
+  const escMax = Math.ceil(Math.max(...linhas.map(l => Math.max(l.orc / A.orcTotal, A.realEap ? l.real / A.realEap : 0))) * 10 + .5) / 10;
+  const ticks = []; for (let t = 0; t <= escMax + 1e-9; t += escMax > .5 ? .2 : .1) ticks.push(t);
+  const grid = ticks.map(t => `<span class="pares-grid" style="left:${t / escMax * 100}%"></span>`).join("");
+  let html = `<div class="hide-m"></div><div class="hide-m"></div><div class="pares-head hide-m">% consumido · Δ fatia</div>`;
+  linhas.forEach(l => {
+    const fo = l.orc / A.orcTotal, fp = A.realEap ? l.real / A.realEap : 0, cons = l.real / l.orc, d = (fp - fo) * 100;
+    html += `<div class="row" data-k="${l.cod}"><div class="lab" title="${l.detalhe || l.nome}">${l.nome}</div>
+      <div class="duo">${grid}
+        <div class="b"><i class="g-orc" data-w="${fo / escMax}"></i><span>${pct(fo)}</span></div>
+        <div class="b"><i class="g-mix" data-w="${fp / escMax}"></i><span>${pct(fp)}</span></div></div>
+      <div class="kpi2"><b class="${cons ? "" : "zero"}">${pct(cons)}</b><small class="${d > .05 ? "pos" : d < -.05 ? "neg" : ""}">${d > 0 ? "+" : ""}${num(d, 1)} p.p.</small></div></div>`;
+  });
+  html += `<div class="hide-m"></div><div class="pares-axis">${ticks.map(t => `<span style="left:${t / escMax * 100}%">${num(t * 100)}%</span>`).join("")}</div><div class="hide-m"></div>`;
+  $("pares").innerHTML = html;
+  $("chip-pares").textContent = `orçado ${milc(A.orcTotal)} · pago ${milc(A.realEap)}`;
+  $("pct-cons").textContent = pct(A.realEap / A.orcTotal);
+  $("pares").querySelectorAll(".row").forEach(r => { const l = linhas.find(x => x.cod === r.dataset.k);
+    r.querySelectorAll(".lab,.duo,.kpi2").forEach(n => hover(n, () => `<div class="t">${l.nome}</div>` + (l.detalhe ? `<div style="margin-bottom:4px">${l.detalhe}</div>` : "") +
+      kv("Orçado", brl(l.orc)) + kv("Pago", brl(l.real)) + kv("% consumido", pct(l.real / l.orc)) + kv("Fatia do orçamento", pct(l.orc / A.orcTotal)) + kv("Fatia do pago", pct(A.realEap ? l.real / A.realEap : 0)))); });
+  $("l-pares").innerHTML = lead("pares") + A.frases.pares + " " + A.frases.grupos.split(". ").slice(-1)[0];
+})();
+
+/* ================= tabelas + rodapé ================= */
 $("tables").innerHTML =
   `<div class="tbl"><table><caption>Orçado x realizado por grupo</caption><thead><tr><th>Grupo</th><th class="n">Orçado</th><th class="n">Realizado</th><th class="n">% consumido</th></tr></thead><tbody>` +
   A.grupos.map(g => `<tr><td>${g.cod} · ${g.nome}</td><td class="n">${brl(g.orc)}</td><td class="n">${brl(g.real)}</td><td class="n">${pct(g.real / g.orc)}</td></tr>`).join("") +
@@ -461,19 +578,17 @@ $("tables").innerHTML =
   `<div class="tbl"><table><caption>Pagamentos do período</caption><thead><tr><th>Data</th><th>Canal</th><th>Favorecido</th><th class="n">Valor</th></tr></thead><tbody>` +
   A.pagamentos.map(p => `<tr><td>${dm(p.data)}</td><td>${p.canal}</td><td>${p.favorecido}</td><td class="n">${brl(p.valor)}</td></tr>`).join("") +
   `<tr><td colspan="3"><b>Total</b></td><td class="n"><b>${brl(A.totalPago)}</b></td></tr></tbody></table></div>`;
-$("rodape").innerHTML = `Fonte: planilhas da pasta <b>${DADOS.pasta_origem}</b> (controle financeiro e reembolsos). Gerado em ${data(DADOS.gerado_em)}.<br>` +
-  `Realizado = soma dos lançamentos vinculados à EAP; reembolsos ainda não têm código da EAP e aparecem só nos blocos de pagamentos. ` +
-  `Premissa das estimativas de economia: ${pct(A.PREMISSAS.economiaNegociacao, 0)} sobre itens ainda não contratados.`;
+$("rodape").innerHTML = `fonte: ${DADOS.pasta_origem} (controle financeiro, reembolsos, diário de obra) · gerado em ${data(DADOS.gerado_em)}<br>` +
+  `realizado = lançamentos vinculados à EAP · reembolsos sem código da EAP aparecem só nos blocos de pagamentos · premissa de economia: ${pct(A.PREMISSAS.economiaNegociacao, 0)} sobre itens não contratados`;
 
-/* ---------- montagem ---------- */
-drawEvo();
+/* ================= montagem ================= */
+drawTraj();
 requestAnimationFrame(() => requestAnimationFrame(() => {
   countUp();
-  document.querySelectorAll(".meter i").forEach(m => m.style.width = Math.max(2, +m.dataset.w * 100) + "%");
-  document.querySelectorAll(".track span").forEach(b => { const w = +b.dataset.w * 100; b.style.width = (w > 0 ? Math.max(.8, w) : 0) + "%"; });
+  document.querySelectorAll("[data-w]").forEach(b => { const w = +b.dataset.w * 100; b.style.width = (w > 0 ? Math.max(.8, w) : 0) + "%"; });
 }));
 let rt, lastW = innerWidth;
-addEventListener("resize", () => { if (innerWidth === lastW) return; lastW = innerWidth; clearTimeout(rt); rt = setTimeout(drawEvo, 150); });
+addEventListener("resize", () => { if (innerWidth === lastW) return; lastW = innerWidth; clearTimeout(rt); rt = setTimeout(drawTraj, 150); });
 </script>
 </body>
 </html>
